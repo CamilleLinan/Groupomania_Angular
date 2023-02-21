@@ -1,0 +1,36 @@
+<header class="login_header">
+    <img src="../../../../assets/img/groupomania-logo.png" alt="groupomania logo" class="login_header_img">
+</header>
+
+<section className="login_section bg_section">
+    <header className="login_section_header">
+        <button id="signup" (click)="toggleForm('signUp')">S'inscrire</button>
+        <button id="signin" (click)="toggleForm('signIn')">Se connecter</button>
+    </header>
+    <br/>
+    <article className="login_section_form">
+        <form *ngIf="showSignUpForm" (ngSubmit)="onSubmitSignUpForm(signUpForm)" #signUpForm="ngForm">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" ngModel required>
+            
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" ngModel required>
+          
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" ngModel required>
+          
+            <button type="submit">Créer un compte</button>
+          </form>
+          
+          <!-- Affiche le formulaire d'inscription si showRegisterForm est vrai -->
+          <form *ngIf="showSignInForm" (ngSubmit)="onSubmitSignInForm(signInForm)" #signInForm="ngForm">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" ngModel required>
+          
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" ngModel required>
+          
+            <button type="submit">Se connecter</button>
+          </form>
+    </article>
+</section>

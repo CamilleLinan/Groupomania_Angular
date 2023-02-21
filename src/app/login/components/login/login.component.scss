@@ -1,0 +1,11 @@
+.login {
+    &_header {
+        width: 100%;
+        display: flex;
+        margin: 7rem auto;
+        &_img {
+            width: 600px;
+            margin: auto;
+        }
+    }
+}
