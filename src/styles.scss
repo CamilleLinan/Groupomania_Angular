@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+/* FONTS */
 @font-face {
     font-family: 'Lato';
     src: url('./assets/fonts/Lato-Regular.ttf');
@@ -13,6 +14,12 @@
     font-family: 'Lato-Italic';
     src: url('./assets/fonts/Lato-Italic.ttf');
 }
+
+/* VARIABLES */
+$primary-clr: #14242A;
+$secondary-clr: #314245;
+$tertiary-clr: #99BEBF;
+$bg-clr: rgba(180, 208, 205, 0.525);
 
 body {
     margin: 0;
@@ -32,6 +39,32 @@ li {
     list-style-type: none;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    border: none;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    width: 100%;
+    color: white;
+    background-color: #213d47;
+}
+
 .bold {
     font-family: 'Lato-Bold';
+}
+
+.form {
+    &_input {
+        height: 1.2rem;
+        border: 1px solid grey;
+        border-radius: 0.3rem;
+        margin: 0.2rem 0 0.5rem 0;
+    }
+    &_btn {
+        margin: 0.6rem 0 1rem 0;
+    }
 }

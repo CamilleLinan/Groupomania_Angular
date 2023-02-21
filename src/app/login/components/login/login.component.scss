@@ -3,9 +3,38 @@
         width: 100%;
         display: flex;
         margin: 7rem auto;
+        
         &_img {
             width: 600px;
             margin: auto;
         }
+    }
+
+    &_section {
+        width: 50%;
+        max-width: 400px;
+        margin: auto;
+        background-color: rgba(201, 222, 220, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 0.5rem;
+        box-shadow: 0 0 16px #0000002e;
+
+        &_header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            &_btn {
+                &_signup {
+                    border-radius: 0.5rem 0 0 0;
+                }
+                &_signin {
+                    border-radius: 0 0.5rem 0 0;
+                }
+            }
+        }
+        &_form {
+            margin: 1rem;
+        }
+        
     }
 }
