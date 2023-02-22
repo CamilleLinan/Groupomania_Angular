@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/core/models/user.model';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +17,16 @@ export class LoginComponent {
   signUpForm!: FormGroup;
   signInForm!: FormGroup;
   namesRegex!: RegExp;
+  user: User = {
+    lastname: '',
+    firstname: '',
+    email: '',
+    password: '',
+  }
 
   constructor(private router: Router,
-              private formBuilder: FormBuilder) {}
+              private formBuilder: FormBuilder,
+              private userService: UserService) {}
 
   ngOnInit(): void {
     this.namesRegex = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/i;
@@ -65,7 +75,7 @@ export class LoginComponent {
     });
   }
 
-  getErrorMessage(fieldName: string) {
+  getErrorMessageSignUp(fieldName: string) {
     const field = <AbstractControl>this.signUpForm.get(fieldName);
     if (field?.hasError('required')) {
       return 'Ce champ est requis';
@@ -85,12 +95,28 @@ export class LoginComponent {
     return '';
   }
 
-  onSubmitSignUpForm(): void {
-    if (this.signUpForm.invalid) {
-      console.log('non')
-    } else {
-      console.log('SignUp form submitted:', this.signUpForm.value);
+  getErrorMessageSignIn(fieldName: string) {
+    const field = <AbstractControl>this.signInForm.get(fieldName);
+    if (field?.hasError('required')) {
+      return 'Ce champ est requis';
     }
+    return '';
+  }
+
+  onSubmitSignUpForm(): void {
+    const observable: Observable<any> = this.userService.createUser(this.user);
+    observable.subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.error(error);
+      },
+      () => {
+        console.log('Request completed');
+      }
+    );
+    console.log('SignUp form submitted:', this.signUpForm.value);
   }
 
   onSubmitSignInForm(): void {
