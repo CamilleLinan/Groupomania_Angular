@@ -4,43 +4,89 @@
 
 <section class="login_section bg_section">
     <header class="login_section_header">
-        <button id="signup" (click)="toggleForm('signUp')" class="login_section_header_btn login_section_header_btn_signup">S'inscrire</button>
-        <button id="signin" (click)="toggleForm('signIn')" class="login_section_header_btn login_section_header_btn_signin">Se connecter</button>
+        <button 
+            id="signup" 
+            (click)="toggleForm('signUp')" 
+            [ngClass]="{ 'inactive': inactiveForm === 'signUp' }"
+            class="login_section_header_btn login_section_header_btn_signup">
+                S'inscrire
+        </button>
+        <button 
+            id="signin" 
+            (click)="toggleForm('signIn')"
+            [ngClass]="{ 'inactive': inactiveForm === 'signIn' }" 
+            class="login_section_header_btn login_section_header_btn_signin">
+                Se connecter
+        </button>
     </header>
     
     <article class="login_section_form">
-        <form [formGroup]="signUpForm" *ngIf="showSignUpForm">
-            <label for="lastname" class="form_label">Nom :</label>
-            <input type="text" formControlName="lastname" id="lastname" class="form_input">
+        <!-- SIGNUP FORM -->
+        <form [formGroup]="signUpForm" *ngIf="showSignUpForm" class="form">
+            <label for="lastname" class="form_label bold">Nom :</label>
+            <input 
+                type="text" 
+                formControlName="lastname" 
+                id="lastname" 
+                class="form_input" 
+                [ngClass]="{ 'error': signUpForm.get('lastname')?.touched && signUpForm.get('lastname')?.invalid }"
+            >
+            <span *ngIf="signUpForm.get('lastname')?.touched && signUpForm.get('lastname')?.invalid" class="form_error bold">{{ getErrorMessage('lastname') }}</span>
             
-            <span *ngIf="signUpForm.get('lastname')?.touched && signUpForm.get('lastname')?.invalid" class="form_error">{{ getErrorMessage('lastname') }}</span>
+            <label for="firstname" class="form_label bold">Prénom :</label>
+            <input 
+                type="text" 
+                formControlName="firstname" 
+                id="firstname" 
+                class="form_input"
+                [ngClass]="{ 'error': signUpForm.get('firstname')?.touched && signUpForm.get('firstname')?.invalid }"
+            >
+            <span *ngIf="signUpForm.get('firstname')?.touched && signUpForm.get('firstname')?.invalid" class="form_error bold">{{ getErrorMessage('firstname') }}</span>
             
-            <label for="firstname" class="form_label">Prénom :</label>
-            <input type="text" formControlName="firstname" id="firstname" class="form_input">
-            
-            <span *ngIf="signUpForm.get('firstname')?.touched && signUpForm.get('firstname')?.invalid" class="form_error">{{ getErrorMessage('firstname') }}</span>
-            
-            <label for="email" class="form_label">Email :</label>
-            <input type="email" formControlName="email" id="email" class="form_input">
-            
-            <span *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid" class="form_error">{{ getErrorMessage('email') }}</span>
+            <label for="email" class="form_label bold">Email :</label>
+            <input 
+                type="email" 
+                formControlName="email" 
+                id="email" 
+                class="form_input"
+                [ngClass]="{ 'error': signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid }"
+            >
+            <span *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid" class="form_error bold">{{ getErrorMessage('email') }}</span>
           
-            <label for="password" class="form_label">Mot de passe :</label>
-            <input type="password" formControlName="password" id="password" class="form_input">
-            
-            <span *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid" class="form_error">{{ getErrorMessage('password') }}</span>
+            <label for="password" class="form_label bold">Mot de passe :</label>
+            <input 
+                type="password" 
+                formControlName="password" 
+                id="password" 
+                class="form_input"
+                [ngClass]="{ 'error': signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid }"
+            >
+            <span *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid" class="form_error bold">{{ getErrorMessage('password') }}</span>
 
-            <button type="submit" (click)="onSubmitSignUpForm()" [disabled]="signUpForm.invalid" class="form_btn">
+            <button type="submit" (click)="onSubmitSignUpForm()" class="form_btn" [disabled]="signUpForm.invalid">
                 Créer un compte
             </button>
           </form>
           
-          <form [formGroup]="signInForm"  *ngIf="showSignInForm">
-            <label for="email" class="form_label">Email :</label>
-            <input type="email" formControlName="email" id="email" class="form_input">
+          <!-- SIGNIN FORM -->
+          <form [formGroup]="signInForm"  *ngIf="showSignInForm" class="form">
+            <label for="email" class="form_label bold">Email :</label>
+            <input 
+                type="email" 
+                formControlName="email" 
+                id="email" 
+                class="form_input"
+                [ngClass]="{ 'error': signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid }"
+            >
           
-            <label for="password" class="form_label">Mot de passe :</label>
-            <input type="password" formControlName="password" id="password" class="form_input">
+            <label for="password" class="form_label bold">Mot de passe :</label>
+            <input 
+                type="password" 
+                formControlName="password" 
+                id="password" 
+                class="form_input"
+                [ngClass]="{ 'error': signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid }"
+            >
           
             <button type="submit" (click)="onSubmitSignInForm()" [disabled]="signUpForm.invalid" class="form_btn">
                 Se connecter

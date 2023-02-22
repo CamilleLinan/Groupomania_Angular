@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   showSignUpForm = true;
   showSignInForm = false;
+  inactiveForm: 'signUp' | 'signIn' = 'signIn';
   signUpForm!: FormGroup;
   signInForm!: FormGroup;
   namesRegex!: RegExp;
@@ -72,19 +73,24 @@ export class LoginComponent {
     if (field?.hasError('minlength')) {
       return 'Le champ doit contenir au moins 2 caractères';
     }
-  
     if (field?.hasError('maxlength')) {
       return 'Le champ ne doit pas contenir plus de 30 caractères';
     }
-  
     if (field?.hasError('pattern')) {
       return 'Le champ ne doit contenir que des lettres';
+    }
+    if (field?.hasError('email')) {
+      return 'Merci de renseigner une adresse email correct';
     }
     return '';
   }
 
   onSubmitSignUpForm(): void {
-    console.log('SignUp form submitted:', this.signUpForm.value);
+    if (this.signUpForm.invalid) {
+      console.log('non')
+    } else {
+      console.log('SignUp form submitted:', this.signUpForm.value);
+    }
   }
 
   onSubmitSignInForm(): void {
@@ -95,9 +101,11 @@ export class LoginComponent {
     if (form === 'signUp') {
       this.showSignUpForm = true;
       this.showSignInForm = false;
+      this.inactiveForm = 'signIn';
     } else {
       this.showSignUpForm = false;
       this.showSignInForm = true;
+      this.inactiveForm = 'signUp';
     }
   }
 }
