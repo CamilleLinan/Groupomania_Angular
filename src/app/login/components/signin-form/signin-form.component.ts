@@ -9,11 +9,12 @@ import { FormGroup } from '@angular/forms';
 export class SigninFormComponent {
   
   signInForm!: FormGroup;
-
-  onSubmitSignInForm() {
+  
+  getErrorMessageSignIn(arg0: string) {
     throw new Error('Method not implemented.');
   }
-  getErrorMessageSignIn(arg0: string) {
+
+  onSubmitSignInForm() {
     throw new Error('Method not implemented.');
   }
 }

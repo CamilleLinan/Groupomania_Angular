@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, delay, map, mapTo, of } from "rxjs";
-import { User } from "../../core/models/user.model";
+import { catchError, delay, map, of } from "rxjs";
+import { User } from "../../login/models/signup-form-value.model";
 
 @Injectable({
     providedIn: 'root'

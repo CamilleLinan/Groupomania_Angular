@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/core/models/user.model';
+import { User } from '../../models/signup-form-value.model';
 import { UserService } from 'src/app/login/services/login.service';
 
 @Component({
