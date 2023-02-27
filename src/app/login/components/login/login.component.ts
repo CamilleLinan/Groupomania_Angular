@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/core/models/user.model';
-import { UserService } from 'src/app/core/services/user.service';
+import { UserService } from 'src/app/login/services/login.service';
 
 @Component({
   selector: 'app-login',
