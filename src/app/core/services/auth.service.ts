@@ -10,11 +10,10 @@ import { UserSignIn } from "src/app/login/models/signin-form-value.model";
 })
 export class AuthService {
     private isLoggedIn: boolean = false;
+    private token!: string;
 
     constructor(private http: HttpClient,
-                private route: Router) {
-        this.isLoggedIn = this.checkIsLoggedIn()
-    }
+                private route: Router) { this.isLoggedIn = this.checkIsLoggedIn() }
 
     login(formValue: UserSignIn): Observable<boolean> {
         return this.http.post<AuthResponse>('http://localhost:3001/api/user/signin', formValue).pipe(
@@ -22,7 +21,7 @@ export class AuthService {
                 localStorage.setItem('userId', response.userId);
                 localStorage.setItem('token', response.token);
                 this.isLoggedIn = true;
-                console.log(this.isLoggedIn);
+                this.token = response.token;
                 return true
             }),
             catchError((error: HttpErrorResponse) => {
@@ -43,6 +42,11 @@ export class AuthService {
 
     isAuth(): boolean {
         return this.isLoggedIn;
+    }
+
+    getToken(): string {
+        const token = localStorage.getItem('token')
+        return token!;
     }
 
     private checkIsLoggedIn(): boolean {

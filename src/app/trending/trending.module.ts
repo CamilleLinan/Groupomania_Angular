@@ -5,11 +5,13 @@ import { TrendingRoutingModule } from './trending-routing.module';
 import { TrendingListComponent } from './components/trending-list/trending-list.component';
 import { TrendingService } from './services/trending.service';
 import { CoreModule } from '../core/core.module';
+import { NewPostComponent } from './components/new-post/new-post.component';
 
 
 @NgModule({
   declarations: [
-    TrendingListComponent
+    TrendingListComponent,
+    NewPostComponent
   ],
   imports: [
     CommonModule,
