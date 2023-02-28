@@ -35,8 +35,6 @@
         <span *ngIf="emailCtrl.invalid && (emailCtrl.dirty || emailCtrl.touched)" class="form_error">
             {{ getErrorMessages(emailCtrl) }}
         </span>
-        
-        <span *ngIf="errorMessage" class="form_error">{{ errorMessage }}</span>
 
         <label for="password" class="form_label bold">Mot de passe :</label>
         <input 
@@ -50,6 +48,8 @@
             {{ getErrorMessages(passwordCtrl) }}
         </span>
 
+        <span *ngIf="errorMessage" class="form_error bold center">{{ errorMessage }}</span>
+
         <button type="submit" (click)="onSubmitSignUpForm()" class="form_btn" [disabled]="signUpForm.invalid">
             Créer un compte
         </button>
@@ -57,5 +57,5 @@
 </div>
 
 <div *ngIf="submittedSuccessfully">
-    <p class="success bold">Enregistrement réussi, veuillez vous connecter !</p>
+    <p class="success bold center">Enregistrement réussi, veuillez vous connecter !</p>
 </div>

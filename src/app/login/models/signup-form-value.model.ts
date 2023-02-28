@@ -1,4 +1,4 @@
-export class User {
+export class UserSignUp {
     lastname!: string;
     firstname!: string;
     email!: string;
