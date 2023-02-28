@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TrendingRoutingModule } from './trending-routing.module';
 import { TrendingListComponent } from './components/trending-list/trending-list.component';
 import { TrendingService } from './services/trending.service';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { TrendingService } from './services/trending.service';
   ],
   imports: [
     CommonModule,
-    TrendingRoutingModule
+    TrendingRoutingModule,
+    CoreModule
   ],
   exports: [
     TrendingListComponent

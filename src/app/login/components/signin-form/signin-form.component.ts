@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, of, tap } from 'rxjs';
-import { LoginService } from '../../services/login.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-signin-form',
@@ -17,7 +17,7 @@ export class SigninFormComponent {
   errorMessage: string = '';
 
   constructor(private formBuilder: FormBuilder,
-              private loginService: LoginService,
+              private authService: AuthService,
               private router: Router) {}
   
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class SigninFormComponent {
   }
 
   onSubmitSignInForm() {
-    this.loginService.connectUser(this.signInForm.value).pipe(
+    this.authService.login(this.signInForm.value).pipe(
       tap(saved => {
         if (saved) {
           this.router.navigateByUrl('/trending');
