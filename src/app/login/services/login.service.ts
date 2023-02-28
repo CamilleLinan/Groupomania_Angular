@@ -1,6 +1,6 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, delay, map, of } from "rxjs";
+import { catchError, delay, map, Observable, of, throwError } from "rxjs";
 import { User } from "../../login/models/signup-form-value.model";
 
 @Injectable({
@@ -9,13 +9,17 @@ import { User } from "../../login/models/signup-form-value.model";
 export class LoginService {
     constructor(private http: HttpClient) {}
 
-    createUser(formValue: User) {
+    createUser(formValue: User): Observable<boolean> {
         return this.http.post('http://localhost:3001/api/user/signup', formValue).pipe(
             map(() => true),
             delay(1000),
-            catchError(() => of(false).pipe(
-                delay(1000)
-            ))
+            catchError((error: HttpErrorResponse) => {
+                if (error.status === 409) {
+                    return throwError('unique');
+                } else {
+                    return throwError('erreur')
+                }
+            })
         );
     }
 }

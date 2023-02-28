@@ -14,15 +14,7 @@ export class LoginComponent {
   showSignUpForm = true;
   showSignInForm = false;
   inactiveForm: 'signUp' | 'signIn' = 'signIn';
-  signUpForm!: FormGroup;
   signInForm!: FormGroup;
-  namesRegex!: RegExp;
-  user: User = {
-    lastname: '',
-    firstname: '',
-    email: '',
-    password: '',
-  }
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
@@ -30,17 +22,6 @@ export class LoginComponent {
 
   ngOnInit(): void {
 
-  }
-
-  getErrorMessageSignUp(fieldName: string) {
-    const field = <AbstractControl>this.signUpForm.get(fieldName);
-    if (field?.hasError('required')) {
-      return 'Ce champ est requis';
-    }
-    if (field?.hasError('minlength')) {
-      return 'Le champ doit contenir au moins 2 caractères';
-    }
-    return '';
   }
 
   getErrorMessageSignIn(fieldName: string) {

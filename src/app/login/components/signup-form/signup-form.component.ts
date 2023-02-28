@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { catchError, of, tap } from 'rxjs';
 import { LoginService } from '../../services/login.service';
 import { lastnameValidator } from '../../validators/name.validator';
 import { passwordValidator } from '../../validators/password.validator';
@@ -18,6 +19,8 @@ export class SignupFormComponent {
   passwordCtrl!: FormControl;
   namesRegExp!: RegExp;
   passwordRegExp!: RegExp;
+  errorMessage: string = '';
+  submittedSuccessfully = false;
   
   constructor(private formBuilder: FormBuilder,
               private loginService: LoginService) {}
@@ -84,6 +87,22 @@ export class SignupFormComponent {
   }
 
   onSubmitSignUpForm() {
-    console.log(this.signUpForm.value);
+    this.loginService.createUser(this.signUpForm.value).pipe(
+      tap(saved => {
+        if (saved) {
+          this.submittedSuccessfully = true;
+        } else {
+          console.log('Echec')
+        }
+      }),
+      catchError(error => {
+        if (error === 'unique') {
+          this.errorMessage = 'Cette adresse email est déjà utilisée'
+        } else {
+          this.errorMessage = 'Une erreur interne est survenue'
+        }
+        return of(false);
+      })
+    ).subscribe();
   }
 }
