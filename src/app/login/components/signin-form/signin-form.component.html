@@ -1,0 +1,31 @@
+<form [formGroup]="signInForm" class="form">
+    <label for="email" class="form_label bold">Email :</label>
+    <input 
+        type="email" 
+        formControlName="email" 
+        id="email" 
+        class="form_input"
+        [ngClass]="{ 'error': signInForm.get('email')?.touched && signInForm.get('email')?.invalid }"
+    >
+    <span *ngIf="emailCtrl.invalid && (emailCtrl.dirty || emailCtrl.touched)" class="form_error">
+        {{ getErrorMessages(emailCtrl) }}
+    </span>
+  
+    <label for="password" class="form_label bold">Mot de passe :</label>
+    <input 
+        type="password" 
+        formControlName="password" 
+        id="password" 
+        class="form_input"
+        [ngClass]="{ 'error': signInForm.get('password')?.touched && signInForm.get('password')?.invalid }"
+    >
+    <span *ngIf="passwordCtrl.invalid && (passwordCtrl.dirty || passwordCtrl.touched)" class="form_error">
+        {{ getErrorMessages(passwordCtrl) }}
+    </span>
+  
+    <span *ngIf="errorMessage" class="form_error bold center">{{ errorMessage }}</span>
+
+    <button type="submit" (click)="onSubmitSignInForm()" [disabled]="signInForm.invalid" class="form_btn">
+        Se connecter
+    </button>
+  </form>

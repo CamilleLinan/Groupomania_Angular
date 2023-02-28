@@ -1,0 +1,29 @@
+<header class="login_header">
+    <img src="../../../../assets/img/groupomania-logo.png" alt="groupomania logo" class="login_header_img">
+</header>
+
+<section class="login_section bg_section">
+    <header class="login_section_header">
+        <button 
+            id="signup" 
+            (click)="toggleForm('signUp')" 
+            [ngClass]="{ 'inactive': inactiveForm === 'signUp' }"
+            class="login_section_header_btn login_section_header_btn_signup">
+                S'inscrire
+        </button>
+        <button 
+            id="signin" 
+            (click)="toggleForm('signIn')"
+            [ngClass]="{ 'inactive': inactiveForm === 'signIn' }" 
+            class="login_section_header_btn login_section_header_btn_signin">
+                Se connecter
+        </button>
+    </header>
+    
+    <article class="login_section_form" *ngIf="showSignUpForm">
+        <app-signup-form></app-signup-form>
+    </article>
+    <article class="login_section_form" *ngIf="showSignInForm">
+        <app-signin-form></app-signin-form>
+    </article>
+</section>
