@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { catchError, of, tap } from 'rxjs';
 import { LoginService } from '../../services/login.service';
 
@@ -16,7 +17,8 @@ export class SigninFormComponent {
   errorMessage: string = '';
 
   constructor(private formBuilder: FormBuilder,
-              private loginService: LoginService) {}
+              private loginService: LoginService,
+              private router: Router) {}
   
   ngOnInit(): void {
     this.initSignInForm();
@@ -44,7 +46,7 @@ export class SigninFormComponent {
     this.loginService.connectUser(this.signInForm.value).pipe(
       tap(saved => {
         if (saved) {
-          console.log('OK')
+          this.router.navigateByUrl('/trending');
         } else {
           console.log('ECHEC')
         }
