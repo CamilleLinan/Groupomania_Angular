@@ -6,7 +6,7 @@ import { User } from "../../login/models/signup-form-value.model";
 @Injectable({
     providedIn: 'root'
 })
-export class UserService {
+export class LoginService {
     constructor(private http: HttpClient) {}
 
     createUser(formValue: User) {

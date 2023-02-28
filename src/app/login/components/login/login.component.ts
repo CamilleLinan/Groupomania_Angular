@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../../models/signup-form-value.model';
-import { UserService } from 'src/app/login/services/login.service';
+import { LoginService } from 'src/app/login/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -26,53 +26,10 @@ export class LoginComponent {
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
-              private userService: UserService) {}
+              private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.namesRegex = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/i;
-    this.signUpForm = this.formBuilder.group({
-      lastname: [
-        null, [
-          Validators.required, 
-          Validators.minLength(2), 
-          Validators.maxLength(30),
-          Validators.pattern(this.namesRegex) 
-        ]
-      ],
-      firstname: [
-        null, [
-          Validators.required,
-          Validators.minLength(2), 
-          Validators.maxLength(30),
-          Validators.pattern(this.namesRegex) 
-        ]
-      ],
-      email: [
-        null, [
-          Validators.required,
-          Validators.email
-        ]
-      ],
-      password: [
-        null, [
-          Validators.required
-        ]
-      ]
-    }),
 
-    this.signInForm = this.formBuilder.group({
-      email: [
-        null, [
-          Validators.required,
-          Validators.email
-        ]
-      ],
-      password: [
-        null, [
-          Validators.required
-        ]
-      ]
-    });
   }
 
   getErrorMessageSignUp(fieldName: string) {
@@ -83,15 +40,6 @@ export class LoginComponent {
     if (field?.hasError('minlength')) {
       return 'Le champ doit contenir au moins 2 caractères';
     }
-    if (field?.hasError('maxlength')) {
-      return 'Le champ ne doit pas contenir plus de 30 caractères';
-    }
-    if (field?.hasError('pattern')) {
-      return 'Le champ ne doit contenir que des lettres';
-    }
-    if (field?.hasError('email')) {
-      return 'Merci de renseigner une adresse email correct';
-    }
     return '';
   }
 
@@ -101,22 +49,6 @@ export class LoginComponent {
       return 'Ce champ est requis';
     }
     return '';
-  }
-
-  onSubmitSignUpForm(): void {
-    const observable: Observable<any> = this.userService.createUser(this.user);
-    observable.subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.error(error);
-      },
-      () => {
-        console.log('Request completed');
-      }
-    );
-    console.log('SignUp form submitted:', this.signUpForm.value);
   }
 
   onSubmitSignInForm(): void {
