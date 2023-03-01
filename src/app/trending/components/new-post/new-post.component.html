@@ -1,11 +1,12 @@
-<section>
+<section *ngIf="user$">
     <img [src]="user$.userPicture" [alt]="user$.firstname">
-    <form class="form">
+    <form [formGroup]="newPostForm" class="form">
         <input 
             type="text" 
             placeholder="Quoi de neuf ?" 
             class="form_input"
+            formControlName="message"
         >
-        <button>Publier</button>
+        <button type="submit" (click)="onSubmitNewPostForm()" [disabled]="newPostForm.invalid">Publier</button>
     </form>
 </section>

@@ -1,7 +1,6 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, delay, map, Observable, of, throwError } from "rxjs";
-import { AuthService } from "src/app/core/services/auth.service";
 import { UserSignUp } from "../../login/models/signup-form-value.model";
 
 @Injectable({

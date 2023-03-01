@@ -6,6 +6,7 @@ import { TrendingListComponent } from './components/trending-list/trending-list.
 import { TrendingService } from './services/trending.service';
 import { CoreModule } from '../core/core.module';
 import { NewPostComponent } from './components/new-post/new-post.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,9 @@ import { NewPostComponent } from './components/new-post/new-post.component';
   imports: [
     CommonModule,
     TrendingRoutingModule,
-    CoreModule
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     TrendingListComponent

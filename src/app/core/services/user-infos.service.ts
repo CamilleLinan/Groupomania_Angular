@@ -11,10 +11,6 @@ export class UserInfosService {
     constructor(private http: HttpClient) {}
 
     getUserInfos(userId: string): Observable<UserInfos> {
-        return this.http.get<UserInfos>(`http://localhost:3001/api/user/${userId}`).pipe(
-            catchError((error: HttpErrorResponse) => {
-                return throwError('Probleme serveur');
-            })
-        )
+        return this.http.get<UserInfos>(`http://localhost:3001/api/user/${userId}`)
     }
 }

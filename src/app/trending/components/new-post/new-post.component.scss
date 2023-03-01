@@ -21,6 +21,7 @@ section {
         border-radius: 10rem;
         margin-right: 0.5rem;
         border: 1px solid rgba(94, 94, 94, 0.5);
+        object-fit: cover;
     }
 
     & form {
@@ -29,7 +30,7 @@ section {
 
     & input {
         margin-top: 0;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.5rem;
     }
 
     & button {
