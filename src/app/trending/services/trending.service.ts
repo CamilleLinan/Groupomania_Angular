@@ -10,8 +10,8 @@ export class TrendingService {
 
     constructor(private http: HttpClient) {}
 
-    createNewPost(formValue: NewPost): Observable<boolean> {
-        return this.http.post('http://localhost:3001/api/post', formValue).pipe(
+    createNewPost(formData: FormData): Observable<boolean> {
+        return this.http.post('http://localhost:3001/api/post', formData).pipe(
             map(() => true),
             catchError(() => of(false).pipe(
                 delay(1000)
