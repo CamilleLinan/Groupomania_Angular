@@ -1,5 +1,5 @@
-<section *ngIf="user$">
-    <img [src]="user$.userPicture" [alt]="user$.firstname">
+<section *ngIf="user$" class="new_post">
+    <img [src]="user$.userPicture" [alt]="user$.firstname" class="new_post_img">
     <form [formGroup]="newPostForm" class="form">
         <input 
             type="text" 

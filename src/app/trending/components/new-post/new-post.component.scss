@@ -1,23 +1,15 @@
-@media(max-width: 768px) {
-    section {
-        width: 90% !important;
-    }
-}
-
-section {
+.new_post {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60%;
     margin: 2rem auto;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 0.5rem;
     padding: 0.5rem 0.8rem;
-    max-width: 600px;
 
     & img {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
         border-radius: 10rem;
         margin-right: 0.5rem;
         border: 1px solid rgba(94, 94, 94, 0.5);
@@ -34,6 +26,6 @@ section {
     }
 
     & button {
-        height: 2rem;
+        height: 1.8rem;
     }
 }

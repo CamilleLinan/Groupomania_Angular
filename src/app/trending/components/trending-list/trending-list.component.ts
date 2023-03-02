@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Post } from '../../models/post.modele';
 import { TrendingService } from '../../services/trending.service';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartBorder } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-trending-list',
@@ -11,6 +13,8 @@ import { TrendingService } from '../../services/trending.service';
 export class TrendingListComponent {
 
   posts$!: Observable<Post[]>
+  faHeart = faHeart;
+  faHeartBorder = faHeartBorder;
 
   constructor(private trendingService: TrendingService) {}
 

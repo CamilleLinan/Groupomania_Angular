@@ -7,6 +7,7 @@ import { TrendingService } from './services/trending.service';
 import { CoreModule } from '../core/core.module';
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TrendingRoutingModule,
     CoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   exports: [
     TrendingListComponent

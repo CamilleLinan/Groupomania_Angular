@@ -1,18 +1,22 @@
 <app-header></app-header>
-<app-new-post></app-new-post>
-<ul *ngIf="posts$ | async as posts" class="posts_list">
-    <li *ngFor="let post of posts" class="posts_list_item">
-        <header *ngIf="post.User" class="posts_list_item_header">
-            <img [src]="post.User[0].userPicture" [alt]="post.User[0].lastname" class="posts_list_item_header_img">
-            <p class="posts_list_item_header_names">{{ post.User[0].firstname }} {{ post.User[0].lastname }}</p>
-            <p class="posts_list_item_header_date">{{ post.createdAt | date }}</p>
-        </header>
-        <div>
-            <p>{{ post.message }}</p>
-            <div *ngIf="post.postPicture">
-                <img [src]="post.postPicture" [alt]="">
+<section class="trending_page">
+    <app-new-post></app-new-post>
+    <ul *ngIf="posts$ | async as posts" class="posts_list">
+        <li *ngFor="let post of posts" class="posts_list_item">
+            <header *ngIf="post.User" class="posts_list_item_header">
+                <img [src]="post.User[0].userPicture" [alt]="post.User[0].lastname" class="posts_list_item_header_img">
+                <div class="posts_list_item_header_container">
+                    <p class="posts_list_item_header_names bold">{{ post.User[0].firstname }} {{ post.User[0].lastname }}</p>
+                    <span class="posts_list_item_header_date">{{ post.createdAt | date: 'dd/MM/yyyy' }}</span>
+                </div>
+            </header>
+            <div class="posts_list_item_container">
+                <p class="posts_list_item_message">{{ post.message }}</p>
+                <div *ngIf="post.postPicture">
+                    <img [src]="post.postPicture" [alt]="" class="posts_list_item_img">
+                </div>
             </div>
-        </div>
-        <button>Like It ! {{ post.likes }}</button>
-    </li>
-</ul>
+            <button class="posts_list_item_btn"><fa-icon [icon]="faHeartBorder" class="btn_icon bold"></fa-icon> {{ post.likes }}</button>
+        </li>
+    </ul>
+</section>
