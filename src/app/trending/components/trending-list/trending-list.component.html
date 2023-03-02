@@ -1,3 +1,18 @@
 <app-header></app-header>
 <app-new-post></app-new-post>
-<p>trending-list works!</p>
+<ul *ngIf="posts$ | async as posts" class="posts_list">
+    <li *ngFor="let post of posts" class="posts_list_item">
+        <header *ngIf="post.User" class="posts_list_item_header">
+            <img [src]="post.User[0].userPicture" [alt]="post.User[0].lastname" class="posts_list_item_header_img">
+            <p class="posts_list_item_header_names">{{ post.User[0].firstname }} {{ post.User[0].lastname }}</p>
+            <p class="posts_list_item_header_date">{{ post.createdAt | date }}</p>
+        </header>
+        <div>
+            <p>{{ post.message }}</p>
+            <div *ngIf="post.postPicture">
+                <img [src]="post.postPicture" [alt]="">
+            </div>
+        </div>
+        <button>Like It ! {{ post.likes }}</button>
+    </li>
+</ul>

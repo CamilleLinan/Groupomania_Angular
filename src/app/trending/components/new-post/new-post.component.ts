@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { catchError, of, tap } from 'rxjs';
 import { UserInfos } from 'src/app/core/models/user-infos.model';
 import { UserInfosService } from 'src/app/core/services/user-infos.service';
-import { NewPost } from '../../models/new-post.model';
 import { TrendingService } from '../../services/trending.service';
 
 @Component({
@@ -71,14 +70,15 @@ export class NewPostComponent {
     this.trendingService.createNewPost(formData).pipe(
       tap(saved => {
         if (saved) {
-          alert('Votre post va être publié !')
+          this.newPostForm.reset();
+          alert('Votre post va être publié !');
         } else {
-          alert('Il y a eu une erreur lors de l\'envoie du post.')
+          alert('Il y a eu une erreur lors de l\'envoie du post.');
         }
       }),
       catchError(error => {
         if (error) {
-          this.errorMessage = 'Une erreur interne est survenue'
+          this.errorMessage = 'Une erreur interne est survenue';
         }
         return of(false);
       })

@@ -1,7 +1,7 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, delay, map, Observable, of } from "rxjs";
-import { NewPost } from "../models/new-post.model";
+import { BehaviorSubject, catchError, delay, map, Observable, of, tap } from "rxjs";
+import { Post } from "../models/post.modele";
 
 @Injectable({
     providedIn: 'root'
@@ -12,10 +12,21 @@ export class TrendingService {
 
     createNewPost(formData: FormData): Observable<boolean> {
         return this.http.post('http://localhost:3001/api/post', formData).pipe(
-            map(() => true),
-            catchError(() => of(false).pipe(
-                delay(1000)
-            ))
+            map(() => true)
         )
+    }
+
+    private _posts$ = new BehaviorSubject<Post[]>([]);
+    get posts$(): Observable<Post[]> {
+        return this._posts$.asObservable();
+    }
+
+    getPosts() {
+        this.http.get<Post[]>('http://localhost:3001/api/post').pipe(
+            tap(posts => {
+                console.log('Posts:', posts);
+                this._posts$.next(posts)
+            })
+        ).subscribe();
     }
 }
