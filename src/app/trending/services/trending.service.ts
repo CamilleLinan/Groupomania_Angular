@@ -29,4 +29,14 @@ export class TrendingService {
             })
         ).subscribe();
     }
+
+    likePost(postId: string, userId: string, like: number) {
+        const body = { like: like };
+        const user = JSON.parse(localStorage.getItem('userId')!);
+        if (user && user._id === userId) {
+          // L'utilisateur connecté est le même que celui qui like
+          userId;
+        }
+        return this.http.post(`http://localhost:3001/api/posts/${postId}/like`, userId);
+      }
 }

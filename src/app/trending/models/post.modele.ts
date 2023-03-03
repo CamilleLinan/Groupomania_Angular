@@ -14,6 +14,7 @@ export class Post {
     message!: string;
     postPicture?: string;
     likes!: number;
+    usersLiked!: [];
     createdAt!: Date;
     User!: User[];
 }

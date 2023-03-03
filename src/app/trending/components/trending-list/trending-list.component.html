@@ -16,7 +16,9 @@
                     <img [src]="post.postPicture" [alt]="" class="posts_list_item_img">
                 </div>
             </div>
-            <button class="posts_list_item_btn"><fa-icon [icon]="faHeartBorder" class="btn_icon bold"></fa-icon> {{ post.likes }}</button>
+            <button class="posts_list_item_btn" (click)="onLikePost(post._id, userId$!, 1)">
+                <fa-icon [icon]="faHeartBorder" class="btn_icon bold" *ngIf="post.usersLiked"></fa-icon> {{ post.likes }}
+            </button>
         </li>
     </ul>
 </section>
