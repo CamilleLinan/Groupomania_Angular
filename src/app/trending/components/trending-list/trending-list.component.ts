@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { Post } from '../../models/post.modele';
 import { TrendingService } from '../../services/trending.service';
-import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartBorder } from '@fortawesome/free-regular-svg-icons';
-import { Icon } from '@fortawesome/fontawesome-svg-core';
+import { UserInfosService } from 'src/app/core/services/user-infos.service';
+import { UserInfos } from 'src/app/core/models/user-infos.model';
 
 @Component({
   selector: 'app-trending-list',
@@ -16,26 +17,43 @@ export class TrendingListComponent {
   posts$!: Observable<Post[]>;
   userId$ = localStorage.getItem('userId');
   userIsLiked!: boolean;
+  user$!: UserInfos;
   
-  faHeart = faHeart;
-  faHeartBorder = faHeartBorder;
+  likeIcon = faHeart;
+  unlikeIcon = faHeartBorder;
+  editIcon = faPenToSquare;
+  deleteIcon = faTrash;
 
-  constructor(private trendingService: TrendingService) {}
+  constructor(private userInfosService: UserInfosService,
+              private trendingService: TrendingService) {}
 
   ngOnInit() {
+    this.getUserInfos();
     this.trendingService.getPosts();
     this.posts$ = this.trendingService.posts$;
+  }
+
+  private getUserInfos(): void {
+    this.userInfosService.getUserInfos(this.userId$!).pipe(
+      tap(user => {
+        this.user$ = user;
+      }),
+      catchError(error => {
+        if (error) {
+          console.error(error)
+        }
+        return of(false)
+      })
+    ).subscribe();
   }
 
   onLikePost(post: Post, userId: string, like: number) {
     this.trendingService.likePost(post, userId, like);
     if (post.usersLiked.find(user => user === userId)) {
-      // Supprimer son like
       post.likes--;
       post.usersLiked = post.usersLiked.filter(user => user !== userId);
       this.userIsLiked = true;
     } else {
-      // Ajouter un like
       post.likes++;
       post.usersLiked.push(userId);
       this.userIsLiked = false;

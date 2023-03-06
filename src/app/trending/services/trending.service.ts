@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, catchError, delay, identity, map, Observable, of, tap } from "rxjs";
+import { BehaviorSubject, Observable, tap } from "rxjs";
 import { Post } from "../models/post.modele";
 
 @Injectable({
@@ -9,12 +9,6 @@ import { Post } from "../models/post.modele";
 export class TrendingService {
 
     constructor(private http: HttpClient) {}
-
-    createNewPost(formData: FormData): Observable<boolean> {
-        return this.http.post('http://localhost:3001/api/post', formData).pipe(
-            map(() => true)
-        )
-    }
 
     private _posts$ = new BehaviorSubject<Post[]>([]);
     get posts$(): Observable<Post[]> {
@@ -30,14 +24,22 @@ export class TrendingService {
         ).subscribe();
     }
 
+    createNewPost(formData: FormData): Observable<Post> {
+        return this.http.post<Post>('http://localhost:3001/api/post', formData).pipe(
+            tap(_ => {
+                alert('Votre post va être publié !')
+            })
+        )
+    }
+
     likePost(post: Post, userId: string, like: number) {
         const body = {
             userId: userId, 
             like: like
         };
         this.http.post(`http://localhost:3001/api/post/${post._id}/like`, body).pipe(
-            tap(response => {
-              console.log(response);
+            tap(_ => {
+              alert('Votre avis a bien été pris en compte !');
             })
         ).subscribe();
     }

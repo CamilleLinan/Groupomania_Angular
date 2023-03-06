@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { catchError, of, tap } from 'rxjs';
 import { UserInfos } from 'src/app/core/models/user-infos.model';
 import { UserInfosService } from 'src/app/core/services/user-infos.service';
+import { Post } from '../../models/post.modele';
 import { TrendingService } from '../../services/trending.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class NewPostComponent {
   postPictureCtrl!: FormControl;
   userId = localStorage.getItem('userId');
   errorMessage!: string;
+  imagePreviewURL: string | undefined;
   fileToUpload: File | null = null
 
   constructor(private userInfosService: UserInfosService,
@@ -49,6 +51,13 @@ export class NewPostComponent {
       return;
     }
       this.fileToUpload = inputElement.files[0];
+      const file = inputElement.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreviewURL = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+      this.fileToUpload = file;
   }
 
   private initNewPostForm(): void {
@@ -68,12 +77,10 @@ export class NewPostComponent {
     formData.append('message', this.messageCtrl.value);
     formData.append('image', this.fileToUpload!);
     this.trendingService.createNewPost(formData).pipe(
-      tap(saved => {
-        if (saved) {
+      tap(savedPost => {
+        if (savedPost) {
           this.newPostForm.reset();
-          alert('Votre post va être publié !');
-        } else {
-          alert('Il y a eu une erreur lors de l\'envoie du post.');
+          window.location.reload();
         }
       }),
       catchError(error => {

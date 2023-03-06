@@ -7,6 +7,8 @@
             class="form_input"
             formControlName="message"
         >
+
+        <img *ngIf="newPostForm.controls['postPicture'].value" [src]="imagePreviewURL" alt="Image Preview" class="new_post_picture_preview">
         <input 
             *ngIf="newPostForm.valid"
             #fileInput 

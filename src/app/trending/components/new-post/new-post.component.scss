@@ -7,13 +7,21 @@
     border-radius: 0.5rem;
     padding: 0.5rem 0.8rem;
 
-    & img {
+    &_img {
         width: 70px;
         height: 70px;
         border-radius: 10rem;
         margin-right: 0.5rem;
         border: 1px solid rgba(94, 94, 94, 0.5);
         object-fit: cover;
+    }
+
+    &_picture_preview {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 0.3rem;
+        margin: 0.2rem 0 0.4rem 0;
+        border: 1px solid rgba(94, 94, 94, 0.5);
     }
 
     & form {
