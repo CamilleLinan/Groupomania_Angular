@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, catchError, delay, map, Observable, of, tap } from "rxjs";
+import { BehaviorSubject, catchError, delay, identity, map, Observable, of, tap } from "rxjs";
 import { Post } from "../models/post.modele";
 
 @Injectable({
@@ -30,13 +30,15 @@ export class TrendingService {
         ).subscribe();
     }
 
-    likePost(postId: string, userId: string, like: number) {
-        const body = { like: like };
-        const user = JSON.parse(localStorage.getItem('userId')!);
-        if (user && user._id === userId) {
-          // L'utilisateur connecté est le même que celui qui like
-          userId;
-        }
-        return this.http.post(`http://localhost:3001/api/posts/${postId}/like`, userId);
-      }
+    likePost(post: Post, userId: string, like: number) {
+        const body = {
+            userId: userId, 
+            like: like
+        };
+        this.http.post(`http://localhost:3001/api/post/${post._id}/like`, body).pipe(
+            tap(response => {
+              console.log(response);
+            })
+        ).subscribe();
+    }
 }

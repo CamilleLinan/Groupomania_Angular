@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { Post } from '../../models/post.modele';
 import { TrendingService } from '../../services/trending.service';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartBorder } from '@fortawesome/free-regular-svg-icons';
+import { Icon } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-trending-list',
@@ -12,11 +13,12 @@ import { faHeart as faHeartBorder } from '@fortawesome/free-regular-svg-icons';
 })
 export class TrendingListComponent {
 
-  posts$!: Observable<Post[]>
+  posts$!: Observable<Post[]>;
   userId$ = localStorage.getItem('userId');
+  userIsLiked!: boolean;
+  
   faHeart = faHeart;
   faHeartBorder = faHeartBorder;
-  likeValue = 1;
 
   constructor(private trendingService: TrendingService) {}
 
@@ -25,18 +27,18 @@ export class TrendingListComponent {
     this.posts$ = this.trendingService.posts$;
   }
 
-  onLikePost(id: string, userId: string, like: number) {
-    this.trendingService.likePost(id, userId, like).pipe(
-      tap(() => {
-        this.posts$.subscribe(posts => {
-          const post = posts.find(p => p._id === id);
-          if (post) {
-            post.likes += 1;
-            console.log(post)
-          }
-        });
-      }),
-      map(() => true)
-    ).subscribe();
+  onLikePost(post: Post, userId: string, like: number) {
+    this.trendingService.likePost(post, userId, like);
+    if (post.usersLiked.find(user => user === userId)) {
+      // Supprimer son like
+      post.likes--;
+      post.usersLiked = post.usersLiked.filter(user => user !== userId);
+      this.userIsLiked = true;
+    } else {
+      // Ajouter un like
+      post.likes++;
+      post.usersLiked.push(userId);
+      this.userIsLiked = false;
+    }
   }
 }
