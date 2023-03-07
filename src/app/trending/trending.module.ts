@@ -8,12 +8,14 @@ import { CoreModule } from '../core/core.module';
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DeletePostComponent } from './components/delete-post/delete-post.component';
 
 
 @NgModule({
   declarations: [
     TrendingListComponent,
-    NewPostComponent
+    NewPostComponent,
+    DeletePostComponent
   ],
   imports: [
     CommonModule,

@@ -29,7 +29,7 @@ export class TrendingService {
             tap(_ => {
                 alert('Votre post va être publié !')
             })
-        )
+        );
     }
 
     likePost(post: Post, userId: string, like: number) {
@@ -40,6 +40,15 @@ export class TrendingService {
         this.http.post(`http://localhost:3001/api/post/${post._id}/like`, body).pipe(
             tap(_ => {
               alert('Votre avis a bien été pris en compte !');
+            })
+        ).subscribe();
+    }
+
+    deletePost(postId: string) {
+        return this.http.delete(`http://localhost:3001/api/post/${postId}`).pipe(
+            tap(_ => {
+                alert('Votre post va être supprimé.');
+                window.location.reload();
             })
         ).subscribe();
     }
