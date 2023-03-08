@@ -11,11 +11,26 @@ import { TrendingService } from '../../services/trending.service';
 export class DeletePostComponent {
   
   @Input() post!: Post;
-  deleteIcon = faTrash;
 
-  constructor(private trendingService: TrendingService) { }
+  deleteIcon = faTrash;
   
-  onDelete(postId: string) {
-    this.trendingService.deletePost(postId);
+  openModal = false;
+  onCancelFn!: () => void;
+  onDeleteFn!: (postId: string) => void;
+
+  constructor(private trendingService: TrendingService) {
+    
+    this.onCancelFn = () => {
+      this.openModal = false;
+      console.log('click cancel')
+    }
+
+    this.onDeleteFn = (postId: string) => {
+      this.trendingService.deletePost(postId);
+    }
+  }
+  
+  onClickIcon() {
+    this.openModal = true;
   }
 }

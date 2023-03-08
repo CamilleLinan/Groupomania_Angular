@@ -13,9 +13,7 @@
                 </div>
                 <div>
                     <fa-icon [icon]="editIcon" class="posts_list_item_header_icon" *ngIf="userId$ === post.posterId"></fa-icon>
-                    <span class="posts_list_item_header_icon posts_list_item_header_icon_delete" *ngIf="userId$ === post.posterId">
-                        <app-delete-post [post]="post"></app-delete-post>
-                    </span>
+                    <app-delete-post *ngIf="userId$ === post.posterId" [post]="post"></app-delete-post>
                 </div>
             </header>
             <div class="posts_list_item_container">

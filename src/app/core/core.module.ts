@@ -6,11 +6,13 @@ import { UserInfosService } from './services/user-infos.service';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    DeleteModalComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     HttpClientModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    DeleteModalComponent
   ],
   providers: [
     AuthService,

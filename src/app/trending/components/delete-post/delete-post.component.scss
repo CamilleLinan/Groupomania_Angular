@@ -1,0 +1,10 @@
+.delete_post_icon {
+    margin-left: 0.5rem;
+    font-size: 16px;
+    color: grey;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+    &:hover {
+        color: rgb(158, 0, 0);
+    }
+}

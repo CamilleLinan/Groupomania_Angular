@@ -1,0 +1,14 @@
+<div class="modal_backdrop">
+    <div class="modal">
+        <header class="modal_header">
+            <h3 class="modal_header_title">i Supprimer le post</h3>
+        </header>
+        <div class="modal_container">
+            <p class="modal_container_text">Voulez-vous vraiment supprimer ce post ?</p>
+        </div>
+        <footer class="modal_footer">
+            <button type="button" (click)="onCancel()" class="modal_footer_btn modal_footer_btn_cancel">Annuler</button>
+            <button type="button" (click)="onDelete(postId)" class="modal_footer_btn modal_footer_btn_delete">Supprimer</button>
+        </footer>
+    </div>
+</div>
