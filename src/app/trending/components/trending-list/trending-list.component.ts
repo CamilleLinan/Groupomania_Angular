@@ -17,6 +17,7 @@ export class TrendingListComponent {
   posts$!: Observable<Post[]>;
   userId$ = localStorage.getItem('userId');
   userIsLiked!: boolean;
+  userIsAdmin!: boolean;
   user$!: UserInfos;
   
   likeIcon = faHeart;
@@ -35,6 +36,11 @@ export class TrendingListComponent {
     this.userInfosService.getUserInfos(this.userId$!).pipe(
       tap(user => {
         this.user$ = user;
+        if (user.isAdmin) {
+          this.userIsAdmin = true;
+        } else {
+          this.userIsAdmin = false;
+        }
       }),
       catchError(error => {
         if (error) {
