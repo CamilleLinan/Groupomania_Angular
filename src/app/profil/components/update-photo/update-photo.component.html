@@ -1,6 +1,7 @@
-<form action="" class="profil_photo_form">
+<form action=""  class="profil_photo_form">
     <img [src]="userPicture" alt="" class="profil_photo_form_img">
-    <!-- <input type="file"> -->
+    <input *ngIf="openModify" type="file" class="form_input">
 
-    <button class="profil_photo_form_btn">Modifier</button>
+    <button *ngIf="!openModify" (click)="onModify()" class="profil_photo_form_btn">Modifier</button>
+    <button *ngIf="openModify" (click)="onSubmit()" class="profil_photo_form_btn">Valider</button>
 </form>

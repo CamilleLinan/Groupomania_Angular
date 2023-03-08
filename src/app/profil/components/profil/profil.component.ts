@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
 import { catchError, of, tap } from 'rxjs';
+import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
 import { UserInfos } from 'src/app/core/models/user-infos.model';
 import { UserInfosService } from 'src/app/core/services/user-infos.service';
 
@@ -13,6 +13,8 @@ export class ProfilComponent {
 
   userId = localStorage.getItem('userId');
   user$!: UserInfos;
+
+  profilIcon = faAddressCard;
   
   constructor(private userInfosService: UserInfosService) { }
 

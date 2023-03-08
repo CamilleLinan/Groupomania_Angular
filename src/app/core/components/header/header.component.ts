@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { faHouse, faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../services/auth.service';
 

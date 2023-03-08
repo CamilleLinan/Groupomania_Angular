@@ -10,6 +10,19 @@ export class UpdatePhotoComponent {
 
   @Input() userPicture!: string;
 
+  openModify!: boolean;
   updatePhotoForm!: FormGroup;
   userPictureCtrl!: FormControl;
+
+  ngOnInit() {
+    this.openModify = false;
+  }
+
+  onModify() {
+    this.openModify = true;
+  }
+
+  onSubmit() {
+    this.openModify = false;
+  }
 }

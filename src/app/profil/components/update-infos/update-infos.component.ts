@@ -12,8 +12,23 @@ export class UpdateInfosComponent {
   @Input() userLastname!: string;
   @Input() userEmail!: string;
 
+  openModify!: boolean;
   updateInfosForm!: FormGroup;
   userFirstnameCtrl!: FormControl;
   userLastnameCtrl!: FormControl;
   userEmailCtrl!: FormControl;
+
+  constructor() {}
+
+  ngOnInit() {
+    this.openModify = false;
+  }
+
+  onModify() {
+    this.openModify = true;
+  }
+
+  onSubmit() {
+    this.openModify = false;
+  }
 }

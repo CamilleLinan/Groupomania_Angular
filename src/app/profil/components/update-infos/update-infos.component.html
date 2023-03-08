@@ -1,15 +1,16 @@
-<form action="" class="profil_infos_form">
-    <label for="firstname">Prénom :</label>
-    <p>{{ userFirstname }}</p>
-    <!-- <input type="text" class="form_input"> -->
+<form action="" class="profil_infos_form" [formGroup]="updateInfosForm">
+    <label for="firstname" class="bold">Prénom :</label>
+    <p *ngIf="!openModify" class="profil_infos_content">{{ userFirstname }}</p>
+    <input *ngIf="openModify" type="text" [(ngModel)]="userFirstname" class="form_input">
 
-    <label for="lastname">Nom :</label>
-    <p>{{ userLastname }}</p>
-    <!-- <input type="text" class="form_input"> -->
+    <label for="lastname" class="bold">Nom :</label>
+    <p *ngIf="!openModify" class="profil_infos_content">{{ userLastname }}</p>
+    <input *ngIf="openModify" type="text" [(ngModel)]="userLastname" class="form_input">
 
-    <label for="email">Email :</label>
-    <p>{{ userEmail }}</p>
-    <!-- <input type="email" class="form_input"> -->
+    <label for="email" class="bold">Email :</label>
+    <p *ngIf="!openModify" class="profil_infos_content">{{ userEmail }}</p>
+    <input *ngIf="openModify" type="email" [(ngModel)]="userEmail" class="form_input">
 
-    <button class="profil_form_btn">Modifier</button>
+    <button *ngIf="!openModify" (click)="onModify()" class="profil_infos_form_btn">Modifier</button>
+    <button *ngIf="openModify" (click)="onSubmit()" class="profil_infos_form_btn">Valider</button>
 </form>

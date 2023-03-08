@@ -39,6 +39,12 @@
             flex-direction: column-reverse;
             margin-top: -2rem;
         }
+
+        &_infos {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
         
         &_title {
             margin: 1rem 0;
@@ -52,10 +58,13 @@
         right: 0;
         bottom: -2rem;
         width: 160px;
-        height: 1.2rem;
+        height: 1.3rem;
         background-color: rgb(157, 0, 0);
         opacity: 0.5;
         font-size: 13px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -65,4 +74,9 @@
     background-color: grey;
     margin: 0 1rem;
     z-index: 5000;
+}
+
+fa-icon {
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.8);
 }

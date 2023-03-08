@@ -1,13 +1,13 @@
 <app-header></app-header>
 <section class="profil">
     <header class="profil_header">
-        <h1 class="profil_header_title">Votre profil</h1>
-        <span class="profil_header_icone">icone</span>
+        <h1 class="profil_header_title bold">Votre profil</h1>
+        <fa-icon [icon]="profilIcon"></fa-icon>
     </header>
     
     <div class="profil_container">
         <article class="profil_container_picture">
-            <h2 class="profil_container_title">Votre photo</h2>
+            <h2 class="profil_container_title bold">Votre photo</h2>
             
             <app-update-photo [userPicture]="user$.userPicture" class="profil_container_photo"></app-update-photo>
         </article>
@@ -15,7 +15,7 @@
         <span class="deco"></span>
         
         <article class="profil_container_infos">
-            <h2 class="profil_container_title">Vos informations</h2>
+            <h2 class="profil_container_title bold">Vos informations</h2>
             
             <app-update-infos 
                 [userFirstname]="user$.firstname"

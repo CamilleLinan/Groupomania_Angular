@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { LoginService } from '../../services/login.service';
-import { confirmEqualValidator } from '../../validators/confirm.validator';
-import { lastnameValidator } from '../../validators/name.validator';
-import { passwordValidator } from '../../validators/password.validator';
+import { confirmEqualValidator } from '../../../core/validators/confirm.validator';
+import { lastnameValidator } from '../../../core/validators/name.validator';
+import { passwordValidator } from '../../../core/validators/password.validator';
 
 @Component({
   selector: 'app-signup-form',
