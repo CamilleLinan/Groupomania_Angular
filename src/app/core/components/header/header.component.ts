@@ -13,16 +13,7 @@ export class HeaderComponent {
   faUser = faUser
   faLogOut = faRightFromBracket;
 
-  constructor(private authService: AuthService,
-              private route: Router) {}
-
-  goToTrending() {
-    this.route.navigateByUrl('/trending');
-  }
-    
-  goToProfil() {
-    this.route.navigateByUrl('/profil');
-  }
+  constructor(private authService: AuthService) { }
   
   logout(): void {
     this.authService.logout();
