@@ -7,14 +7,12 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
-import { ModifyModalComponent } from './components/modify-modal/modify-modal.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    DeleteModalComponent,
-    ModifyModalComponent
+    DeleteModalComponent
   ],
   imports: [
     CommonModule,
@@ -23,8 +21,7 @@ import { ModifyModalComponent } from './components/modify-modal/modify-modal.com
   ],
   exports: [
     HeaderComponent,
-    DeleteModalComponent,
-    ModifyModalComponent
+    DeleteModalComponent
   ],
   providers: [
     AuthService,

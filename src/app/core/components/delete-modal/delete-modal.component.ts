@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-delete-modal',
@@ -9,4 +10,6 @@ export class DeleteModalComponent {
   @Input() onCancel!: () => void;
   @Input() onDelete!: (postId: string) => void;
   @Input() postId!: string;
+
+  infoIcon = faInfoCircle;
 }

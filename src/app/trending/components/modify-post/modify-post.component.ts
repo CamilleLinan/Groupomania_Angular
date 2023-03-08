@@ -16,6 +16,7 @@ export class ModifyPostComponent {
   modifyPostForm!: FormGroup;
   modifyMessageCtrl!: FormControl;
   modifyPostPictureCtrl!: FormControl;
+  // ERROR
   errorMessage!: string;
   imagePreviewURL: string | undefined;
   fileToUpload: File | null = null

@@ -13,6 +13,7 @@
     top: -0.5rem;
     left: 50%;
     transform: translateX(-50%);
+    width: 60%;
     background-color: rgb(232, 232, 232);
     border: 1px solid #2f697e;
     border-radius: 0.5rem;
@@ -58,4 +59,8 @@
             }
         }
     }
+}
+
+fa-icon {
+    margin-right: 0.3rem;
 }
