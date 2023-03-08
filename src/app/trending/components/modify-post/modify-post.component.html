@@ -1,0 +1,40 @@
+<span (click)="onClickIcon()">
+    <fa-icon [icon]="modifyIcon" class="modify_post_icon"></fa-icon>
+</span>
+
+<div *ngIf="openModal">
+    <div class="modal_backdrop">
+        <div class="modal">
+            <header class="modal_header">
+                <h3 class="modal_header_title"><fa-icon [icon]="infoIcon"></fa-icon> Modifier le post</h3>
+            </header>
+            
+            <form class="modal_form" [formGroup]="modifyPostForm">
+                <label for="message">Modifier le message :</label>
+                    <input 
+                        type="text"
+                        [(ngModel)]="post.message"
+                        formControlName="modifyMessage"
+                        class="modal_form_input"
+                    >
+                
+                <label for="postPicture">Modifier l'image :</label>
+                    <img *ngIf="post.postPicture && !modifyPostForm.controls['modifyPostPicture'].value" [src]="post.postPicture" [alt]="post.message">
+                    <img *ngIf="modifyPostForm.controls['modifyPostPicture'].value" [src]="imagePreviewURL" alt="Image Preview">
+                    <input
+                        #fileInput  
+                        type="file"
+                        accept=".jpg, .jpeg, .png"
+                        formControlName="modifyPostPicture"
+                        (change)="onFileSelected($event)"
+                        class="modal_form_input modal_form_input_file"
+                    >
+            </form>
+            
+            <footer class="modal_footer">
+                <button type="button" (click)="onCancel()" class="modal_footer_btn modal_footer_btn_cancel">Annuler</button>
+                <button type="submit" (click)="onModify(post._id)" class="modal_footer_btn modal_footer_btn_modify">Modifier</button>
+            </footer>
+        </div>
+    </div>
+</div>

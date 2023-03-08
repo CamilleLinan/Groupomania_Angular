@@ -1,3 +1,23 @@
 .success {
     color: rgb(33, 118, 33);
 }
+
+.password_form {
+    display: flex;
+    flex-direction: column;
+    
+    &_input {
+        height: 1.8rem;
+        border: 1px solid black;
+        border-radius: 0.3rem;
+        margin: 0.3rem 0 1rem 0;
+        font-size: 16px;
+        &:focus {
+            outline: 2px solid #2c5260;
+        }
+        &.error {
+            outline: 2px solid rgb(155, 0, 0);
+            color: rgb(155, 0, 0);
+        }
+    }
+}

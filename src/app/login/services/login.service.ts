@@ -2,8 +2,6 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, delay, map, Observable, of, throwError } from "rxjs";
 import { UserSignUp } from "../../login/models/signup-form-value.model";
-import { AuthResponse } from "../models/auth-response.modele";
-import { UserSignIn } from "../models/signin-form-value.model";
 
 @Injectable({
     providedIn: 'root'
@@ -23,23 +21,5 @@ export class LoginService {
                 }
             })
         );
-    }
-
-    connectUser(formValue: UserSignIn): Observable<boolean> {
-        return this.http.post<AuthResponse>('http://localhost:3001/api/user/signin', formValue).pipe(
-            map(response => {
-                localStorage.setItem('userId', response.userId);
-                localStorage.setItem('token', response.token);
-                return true
-            }),
-            delay(1000),
-            catchError((error: HttpErrorResponse) => {
-                if (error.status === 401) {
-                    return throwError('Unauthorized')
-                } else {
-                    return throwError('erreur')
-                }
-            })
-        )
     }
 }

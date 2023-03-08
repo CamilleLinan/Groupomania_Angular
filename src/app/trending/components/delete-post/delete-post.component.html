@@ -1,0 +1,11 @@
+<span (click)="onClickIcon()">
+    <fa-icon [icon]="deleteIcon" class="delete_post_icon"></fa-icon>
+</span>
+
+<div *ngIf="openModal">
+    <app-delete-modal 
+        [onCancel]="onCancelFn" 
+        [onDelete]="onDeleteFn" 
+        [postId]="post._id"
+    ></app-delete-modal>
+</div>

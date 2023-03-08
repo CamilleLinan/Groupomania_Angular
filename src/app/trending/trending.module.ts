@@ -4,15 +4,28 @@ import { CommonModule } from '@angular/common';
 import { TrendingRoutingModule } from './trending-routing.module';
 import { TrendingListComponent } from './components/trending-list/trending-list.component';
 import { TrendingService } from './services/trending.service';
+import { CoreModule } from '../core/core.module';
+import { NewPostComponent } from './components/new-post/new-post.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DeletePostComponent } from './components/delete-post/delete-post.component';
+import { ModifyPostComponent } from './components/modify-post/modify-post.component';
 
 
 @NgModule({
   declarations: [
-    TrendingListComponent
+    TrendingListComponent,
+    NewPostComponent,
+    DeletePostComponent,
+    ModifyPostComponent
   ],
   imports: [
     CommonModule,
-    TrendingRoutingModule
+    TrendingRoutingModule,
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   exports: [
     TrendingListComponent

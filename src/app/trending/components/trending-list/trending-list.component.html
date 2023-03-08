@@ -1,1 +1,32 @@
-<p>trending-list works!</p>
+<app-header></app-header>
+<section class="trending_page">
+    <app-new-post></app-new-post>
+    <ul *ngIf="posts$ | async as posts" class="posts_list">
+        <li *ngFor="let post of posts" class="posts_list_item">
+            <header *ngIf="post.User" class="posts_list_item_header">
+                <div class="header_container">
+                    <img [src]="post.User[0].userPicture" [alt]="post.User[0].lastname" class="posts_list_item_header_img">
+                    <div class="posts_list_item_header_container">
+                        <p class="posts_list_item_header_names bold">{{ post.User[0].firstname }} {{ post.User[0].lastname }}</p>
+                        <span class="posts_list_item_header_date">{{ post.createdAt | date: 'dd/MM/yyyy' }}</span>
+                    </div>
+                </div>
+                <div *ngIf="userId$ === post.posterId || userIsAdmin" class="posts_list_item_icons">
+                    <app-modify-post [post]="post"></app-modify-post>
+                    <app-delete-post [post]="post"></app-delete-post>
+                </div>
+            </header>
+            <div class="posts_list_item_container">
+                <p class="posts_list_item_message">{{ post.message }}</p>
+                <div *ngIf="post.postPicture">
+                    <img [src]="post.postPicture" [alt]="" class="posts_list_item_img">
+                </div>
+            </div>
+            <button class="posts_list_item_btn" (click)="onLikePost(post, userId$!, 1)">
+                <fa-icon [icon]="likeIcon" class="btn_icon bold" *ngIf="post.usersLiked && post.usersLiked.includes(userId$!)"></fa-icon>
+                <fa-icon [icon]="unlikeIcon" class="btn_icon bold" *ngIf="!post.usersLiked || !post.usersLiked.includes(userId$!)"></fa-icon>
+                {{ post.likes }}
+            </button>
+        </li>
+    </ul>
+</section>

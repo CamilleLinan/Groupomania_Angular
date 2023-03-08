@@ -1,0 +1,66 @@
+.modal_backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(20px);
+    z-index: 5000;
+}
+
+.modal {
+    position: absolute;
+    top: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    background-color: rgb(232, 232, 232);
+    border: 1px solid #2f697e;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 16px rgba(128, 128, 128, 0.527);
+
+    &_header {
+        background-color: white;
+        border-radius: 0.5rem 0.5rem 0 0;
+        &_title {
+            margin: 0;
+            padding: 0.7rem;
+        }
+    }
+
+    &_container {
+        margin: 0;
+        padding: 0 0.7rem;
+    }
+    
+    &_footer {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 0.5rem;
+        
+        &_btn {
+            width: 45%;
+            height: 2rem;
+            transition: all 250ms ease-in-out;
+            
+            &_cancel {
+                color: black;
+                background-color: white;
+                &:hover {
+                    background-color: rgb(222, 222, 222);
+                }
+            }
+
+            &_delete {
+                background-color: #2f697e;
+                &:hover {
+                    background-color: rgb(158, 0, 0);
+                }
+            }
+        }
+    }
+}
+
+fa-icon {
+    margin-right: 0.3rem;
+}

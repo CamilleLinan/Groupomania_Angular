@@ -28,6 +28,7 @@ body {
     font-size: 18px;
     background: url('./assets/img/groupomania-bg1.jpg') fixed no-repeat center;
     background-size: cover;
+    position: relative;
 }
 
 a {
@@ -35,7 +36,12 @@ a {
     text-decoration: none;
 }
 
+ul {
+    padding: 0;
+}
+
 li {
+    padding: 0;
     list-style-type: none;
 }
 
@@ -85,5 +91,17 @@ button {
     &_error {
         color: rgb(155, 0, 0);
         margin: -0.7rem 0 0.7rem 0;
+    }
+
+    &_btn {
+        transition: all 250ms ease-in-out;
+        &:hover {
+            color: black;
+            background-color: #99BEBF;
+        }
+        &:disabled {
+            color: white;
+            background-color: #2c5260;
+        }
     }
 }

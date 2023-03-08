@@ -1,0 +1,25 @@
+<section *ngIf="user$" class="new_post">
+    <img [src]="user$.userPicture" [alt]="user$.firstname" class="new_post_img">
+    <form [formGroup]="newPostForm" class="form">
+        <input 
+            type="text" 
+            placeholder="Quoi de neuf ?" 
+            class="form_input"
+            formControlName="message"
+        >
+
+        <img *ngIf="newPostForm.controls['postPicture'].value" [src]="imagePreviewURL" alt="Image Preview" class="new_post_picture_preview">
+        <input 
+            *ngIf="newPostForm.valid"
+            #fileInput 
+            type="file"
+            accept=".jpg, .jpeg, .png"
+            formControlName="postPicture"
+            (change)="onFileSelected($event)"
+        >
+
+        <span *ngIf="errorMessage" class="form_error bold center">{{ errorMessage }}</span>
+
+        <button type="submit" (click)="onSubmitNewPostForm()" [disabled]="newPostForm.invalid">Publier</button>
+    </form>
+</section>

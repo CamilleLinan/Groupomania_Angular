@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { catchError, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 import { LoginService } from '../../services/login.service';
+import { confirmEqualValidator } from '../../validators/confirm.validator';
 import { lastnameValidator } from '../../validators/name.validator';
 import { passwordValidator } from '../../validators/password.validator';
 
@@ -16,9 +17,13 @@ export class SignupFormComponent {
   lastnameCtrl!: FormControl;
   firstnameCtrl!: FormControl;
   emailCtrl!: FormControl;
+  passwordForm!: FormGroup;
   passwordCtrl!: FormControl;
+  confirmPasswordCtrl!: FormControl;
+
   namesRegExp!: RegExp;
   passwordRegExp!: RegExp;
+  showPasswordError$!: Observable<boolean>;
   errorMessage: string = '';
   submittedSuccessfully = false;
   
@@ -27,6 +32,7 @@ export class SignupFormComponent {
   
   ngOnInit(): void {
     this.initSignUpForm();
+    this.initFormObservables();
   }
   
   private initSignUpForm(): void {
@@ -53,6 +59,16 @@ export class SignupFormComponent {
       Validators.required,
       passwordValidator
     ]);
+    this.confirmPasswordCtrl = this.formBuilder.control('', [
+      Validators.required
+    ]);
+    this.passwordForm = this.formBuilder.group({
+      password: this.passwordCtrl,
+      confirmPassword: this.confirmPasswordCtrl
+    }, {
+      validators: [confirmEqualValidator('password', 'confirmPassword')],
+      updateOn: 'blur'
+    })
 
     this.signUpForm = this.formBuilder.group({
       lastname: this.lastnameCtrl,
@@ -60,6 +76,16 @@ export class SignupFormComponent {
       email: this.emailCtrl,
       password: this.passwordCtrl
     })
+  }
+
+  initFormObservables() {
+    this.showPasswordError$ = this.passwordForm.statusChanges.pipe(
+      map(status => status === 'INVALID' &&
+                    this.passwordCtrl.value &&
+                    this.confirmPasswordCtrl.value &&
+                    this.passwordForm.hasError('confirmEqual')
+        )
+    )
   }
 
   getErrorMessages(ctrl: AbstractControl) {
