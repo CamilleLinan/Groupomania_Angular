@@ -20,6 +20,7 @@ export class SignupFormComponent {
   passwordForm!: FormGroup;
   passwordCtrl!: FormControl;
   confirmPasswordCtrl!: FormControl;
+  // SEE PASSWORD
 
   namesRegExp!: RegExp;
   passwordRegExp!: RegExp;

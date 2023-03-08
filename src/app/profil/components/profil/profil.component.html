@@ -1,2 +1,30 @@
 <app-header></app-header>
-<p>profil works!</p>
+<section class="profil">
+    <header class="profil_header">
+        <h1 class="profil_header_title">Votre profil</h1>
+        <span class="profil_header_icone">icone</span>
+    </header>
+    
+    <div class="profil_container">
+        <article class="profil_container_picture">
+            <h2 class="profil_container_title">Votre photo</h2>
+            
+            <app-update-photo [userPicture]="user$.userPicture" class="profil_container_photo"></app-update-photo>
+        </article>
+
+        <span class="deco"></span>
+        
+        <article class="profil_container_infos">
+            <h2 class="profil_container_title">Vos informations</h2>
+            
+            <app-update-infos 
+                [userFirstname]="user$.firstname"
+                [userLastname]="user$.lastname"
+                [userEmail]="user$.email"
+            ></app-update-infos>
+            
+            <app-update-password></app-update-password>
+        </article>
+    </div>
+    <button class="profil_footer_btn">Supprimer le profil</button>
+</section>
