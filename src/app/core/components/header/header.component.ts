@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { faHouse, faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../services/auth.service';
 
@@ -12,8 +13,17 @@ export class HeaderComponent {
   faUser = faUser
   faLogOut = faRightFromBracket;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+              private route: Router) {}
 
+  goToTrending() {
+    this.route.navigateByUrl('/trending');
+  }
+    
+  goToProfil() {
+    this.route.navigateByUrl('/profil');
+  }
+  
   logout(): void {
     this.authService.logout();
   }

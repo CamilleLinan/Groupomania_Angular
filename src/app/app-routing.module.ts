@@ -6,6 +6,7 @@ import { AuthGard } from "./core/guards/auth.guard";
 const routes: Routes = [
     { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
     { path: 'trending', loadChildren: () => import('./trending/trending.module').then(m => m.TrendingModule), canActivate: [AuthGard] },
+    { path: 'profil', loadChildren: () => import('./profil/profil.module').then(m => m.ProfilModule), canActivate: [AuthGard] },
     { path: '**', redirectTo: 'login' }
 ];
 
