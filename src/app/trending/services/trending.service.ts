@@ -52,4 +52,13 @@ export class TrendingService {
             })
         ).subscribe();
     }
+
+    modifyPost(postId: string, formData: FormData) {
+        return this.http.put(`http://localhost:3001/api/post/${postId}`, formData).pipe(
+            tap(_ => {
+                alert('Modifications prises en compte !');
+                window.location.reload();
+            })
+        )
+    }
 }

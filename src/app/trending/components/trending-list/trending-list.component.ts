@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { Post } from '../../models/post.modele';
 import { TrendingService } from '../../services/trending.service';
-import { faHeart, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartBorder } from '@fortawesome/free-regular-svg-icons';
 import { UserInfosService } from 'src/app/core/services/user-infos.service';
 import { UserInfos } from 'src/app/core/models/user-infos.model';
@@ -21,7 +21,6 @@ export class TrendingListComponent {
   
   likeIcon = faHeart;
   unlikeIcon = faHeartBorder;
-  editIcon = faPenToSquare;
 
   constructor(private userInfosService: UserInfosService,
               private trendingService: TrendingService) {}

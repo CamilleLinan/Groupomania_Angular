@@ -11,9 +11,9 @@
                         <span class="posts_list_item_header_date">{{ post.createdAt | date: 'dd/MM/yyyy' }}</span>
                     </div>
                 </div>
-                <div>
-                    <fa-icon [icon]="editIcon" class="posts_list_item_header_icon" *ngIf="userId$ === post.posterId"></fa-icon>
-                    <app-delete-post *ngIf="userId$ === post.posterId" [post]="post"></app-delete-post>
+                <div *ngIf="userId$ === post.posterId" class="posts_list_item_icons">
+                    <app-modify-post [post]="post"></app-modify-post>
+                    <app-delete-post [post]="post"></app-delete-post>
                 </div>
             </header>
             <div class="posts_list_item_container">
