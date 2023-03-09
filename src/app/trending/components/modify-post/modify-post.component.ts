@@ -16,7 +16,6 @@ export class ModifyPostComponent {
   modifyPostForm!: FormGroup;
   modifyMessageCtrl!: FormControl;
   modifyPostPictureCtrl!: FormControl;
-  // ERROR
   errorMessage!: string;
   imagePreviewURL: string | undefined;
   fileToUpload: File | null = null
@@ -70,7 +69,6 @@ export class ModifyPostComponent {
     const formData = new FormData();
     formData.append('message', this.modifyMessageCtrl.value);
     formData.append('image', this.fileToUpload!);
-    console.log('message', this.modifyMessageCtrl.value, 'image', this.fileToUpload!);
     this.trendingService.modifyPost(postId, formData)
       .subscribe(() => this.onCancel());
   }

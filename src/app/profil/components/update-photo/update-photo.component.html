@@ -1,5 +1,5 @@
 <form action=""  class="profil_photo_form">
-    <img [src]="userPicture" alt="" class="profil_photo_form_img">
+    <img *ngIf="userPicture" [src]="userPicture" alt="" class="profil_photo_form_img">
     <input *ngIf="openModify" type="file" class="form_input">
 
     <button *ngIf="!openModify" (click)="onModify()" class="profil_photo_form_btn">Modifier</button>

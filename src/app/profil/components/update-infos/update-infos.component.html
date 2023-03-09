@@ -1,16 +1,45 @@
 <form action="" class="profil_infos_form" [formGroup]="updateInfosForm">
     <label for="firstname" class="bold">Prénom :</label>
-    <p *ngIf="!openModify" class="profil_infos_content">{{ userFirstname }}</p>
-    <input *ngIf="openModify" type="text" [(ngModel)]="userFirstname" class="form_input">
+        <p *ngIf="!openModify" class="profil_infos_content">{{ user$.firstname }}</p>
+        <input 
+            *ngIf="openModify" 
+            type="text" 
+            [(ngModel)]="user$.firstname"
+            formControlName="firstname" 
+            class="form_input"
+        >
+        <span *ngIf="updateFirstnameCtrl.invalid && (updateFirstnameCtrl.dirty || updateFirstnameCtrl.touched)" class="form_error">
+            {{ getErrorMessages(updateFirstnameCtrl) }}
+        </span>
 
     <label for="lastname" class="bold">Nom :</label>
-    <p *ngIf="!openModify" class="profil_infos_content">{{ userLastname }}</p>
-    <input *ngIf="openModify" type="text" [(ngModel)]="userLastname" class="form_input">
+        <p *ngIf="!openModify" class="profil_infos_content">{{ user$.lastname }}</p>
+        <input 
+            *ngIf="openModify" 
+            type="text" 
+            [(ngModel)]="user$.lastname"
+            formControlName="lastname" 
+            class="form_input"
+        >
+        <span *ngIf="updateLastnameCtrl.invalid && (updateLastnameCtrl.dirty || updateLastnameCtrl.touched)" class="form_error">
+            {{ getErrorMessages(updateLastnameCtrl) }}
+        </span>
 
     <label for="email" class="bold">Email :</label>
-    <p *ngIf="!openModify" class="profil_infos_content">{{ userEmail }}</p>
-    <input *ngIf="openModify" type="email" [(ngModel)]="userEmail" class="form_input">
+        <p *ngIf="!openModify" class="profil_infos_content">{{ user$.email }}</p>
+        <input 
+            *ngIf="openModify" 
+            type="email" 
+            [(ngModel)]="user$.email"
+            formControlName="email" 
+            class="form_input"
+        >
+        <span *ngIf="updateEmailCtrl.invalid && (updateEmailCtrl.dirty || updateEmailCtrl.touched)" class="form_error">
+            {{ getErrorMessages(updateEmailCtrl) }}
+        </span>
 
-    <button *ngIf="!openModify" (click)="onModify()" class="profil_infos_form_btn">Modifier</button>
-    <button *ngIf="openModify" (click)="onSubmit()" class="profil_infos_form_btn">Valider</button>
+    <span *ngIf="errorMessage" class="form_error bold center">{{ errorMessage }}</span>
+
+    <button *ngIf="!openModify" (click)="onModify()" class="profil_infos_form_btn">Modifier <fa-icon [icon]="editIcon"></fa-icon></button>
+    <button *ngIf="openModify" (click)="onSubmit()" class="profil_infos_form_btn">Valider <fa-icon [icon]="validIcon"></fa-icon></button>
 </form>

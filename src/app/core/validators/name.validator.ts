@@ -1,10 +1,10 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export function lastnameValidator(control: AbstractControl): ValidationErrors | null {
-  const lastnameRegExp: RegExp = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/i;
+export function nameValidator(control: AbstractControl): ValidationErrors | null {
+  const nameRegExp: RegExp = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/i;
 
-  if (control.value && !lastnameRegExp.test(control.value)) {
-    return { 'invalidLastname': true };
+  if (control.value && !nameRegExp.test(control.value)) {
+    return { 'invalidName': true };
   }
   
   return null;

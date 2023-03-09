@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { LoginService } from '../../services/login.service';
 import { confirmEqualValidator } from '../../../core/validators/confirm.validator';
-import { lastnameValidator } from '../../../core/validators/name.validator';
+import { nameValidator } from '../../../core/validators/name.validator';
 import { passwordValidator } from '../../../core/validators/password.validator';
 
 @Component({
@@ -37,20 +37,17 @@ export class SignupFormComponent {
   }
   
   private initSignUpForm(): void {
-    this.namesRegExp = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/i;
-    this.passwordRegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,30}$/;
-
     this.lastnameCtrl = this.formBuilder.control('', [
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(20), 
-      lastnameValidator
+      nameValidator
     ]);
     this.firstnameCtrl = this.formBuilder.control('', [
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(20), 
-      lastnameValidator
+      nameValidator
     ]);
     this.emailCtrl = this.formBuilder.control('', [
       Validators.required, 
@@ -98,7 +95,7 @@ export class SignupFormComponent {
       return 'Doit contenir maximum 20 caractères';
     } else if (ctrl.hasError('email')) {
       return 'Merci de renseigner une adresse mail valide';
-    } else if (ctrl.hasError('invalidLastname')) {
+    } else if (ctrl.hasError('invalidName')) {
       return 'Ce champ ne doit contenir ni chiffre, ni caractère spécial';
     } else if (ctrl.hasError('minMaxLength')) {
       return 'Le mot de passe doit contenir entre 8 et 30 caractères';

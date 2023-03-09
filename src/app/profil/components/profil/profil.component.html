@@ -18,9 +18,7 @@
             <h2 class="profil_container_title bold">Vos informations</h2>
             
             <app-update-infos 
-                [userFirstname]="user$.firstname"
-                [userLastname]="user$.lastname"
-                [userEmail]="user$.email"
+                [user$]="user$"
             ></app-update-infos>
             
             <app-update-password></app-update-password>

@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UpdatePhotoComponent } from './components/update-photo/update-photo.component';
 import { UpdateInfosComponent } from './components/update-infos/update-infos.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { ProfilService } from './services/profil.service';
 
 
 @NgModule({
@@ -28,6 +29,9 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
   ],
   exports: [
     ProfilComponent
+  ],
+  providers: [
+    ProfilService
   ]
 })
 export class ProfilModule { }
