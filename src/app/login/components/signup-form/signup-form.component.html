@@ -38,13 +38,29 @@
 
         <div [formGroup]="passwordForm" class="password_form">
             <label for="password" class="form_label bold">Mot de passe :</label>
-            <input 
-                type="password" 
-                formControlName="password" 
-                id="password" 
-                class="form_input password_form_input"
-                [ngClass]="{ 'error': signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid }"
-            >
+            <div class="input_password_container">
+                <input 
+                    *ngIf="!showPassword"
+                    type="password" 
+                    formControlName="password" 
+                    id="password" 
+                    class="form_input password_form_input"
+                    [ngClass]="{ 'error': signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid }"
+                >
+                <input
+                    *ngIf="showPassword" 
+                    type="text"
+                    formControlName="password" 
+                    class="form_input password_form_input"
+                    [ngClass]="{ 'error': signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid }"
+                >
+                <span *ngIf="!showPassword" (click)="onSeePassword()" class="input_password_container">
+                    <fa-icon [icon]="eyeSlashIcon" class="input_password_container_icon"></fa-icon>
+                </span>
+                <span *ngIf="showPassword" (click)="onUnseePassword()" class="input_password_container">
+                    <fa-icon [icon]="eyeIcon" class="input_password_container_icon"></fa-icon>
+                </span>
+            </div>
             <span *ngIf="passwordCtrl.invalid && (passwordCtrl.dirty || passwordCtrl.touched)" class="form_error">
                 {{ getErrorMessages(passwordCtrl) }}
             </span>

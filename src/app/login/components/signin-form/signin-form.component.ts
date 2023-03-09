@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import { catchError, of, tap } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-signin-form',
@@ -11,9 +12,14 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class SigninFormComponent {
   
+  eyeIcon = faEye;
+  eyeSlashIcon = faEyeSlash;
+
   signInForm!: FormGroup;
   emailCtrl!: FormControl;
   passwordCtrl!: FormControl;
+  
+  showPassword!: boolean;
   errorMessage: string = '';
 
   constructor(private formBuilder: FormBuilder,
@@ -21,7 +27,16 @@ export class SigninFormComponent {
               private router: Router) {}
   
   ngOnInit(): void {
+    this.showPassword = false;
     this.initSignInForm();
+  }
+
+  onSeePassword() {
+    this.showPassword = true;
+  }
+
+  onUnseePassword() {
+    this.showPassword = false;
   }
 
   private initSignInForm(): void {

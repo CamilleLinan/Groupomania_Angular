@@ -5,6 +5,7 @@ import { LoginService } from '../../services/login.service';
 import { confirmEqualValidator } from '../../../core/validators/confirm.validator';
 import { nameValidator } from '../../../core/validators/name.validator';
 import { passwordValidator } from '../../../core/validators/password.validator';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-signup-form',
@@ -13,6 +14,9 @@ import { passwordValidator } from '../../../core/validators/password.validator';
 })
 export class SignupFormComponent {
   
+  eyeIcon = faEye;
+  eyeSlashIcon = faEyeSlash;
+
   signUpForm!: FormGroup;
   lastnameCtrl!: FormControl;
   firstnameCtrl!: FormControl;
@@ -20,10 +24,10 @@ export class SignupFormComponent {
   passwordForm!: FormGroup;
   passwordCtrl!: FormControl;
   confirmPasswordCtrl!: FormControl;
-  // SEE PASSWORD
 
   namesRegExp!: RegExp;
   passwordRegExp!: RegExp;
+  showPassword!: boolean;
   showPasswordError$!: Observable<boolean>;
   errorMessage: string = '';
   submittedSuccessfully = false;
@@ -32,8 +36,17 @@ export class SignupFormComponent {
               private loginService: LoginService) {}
   
   ngOnInit(): void {
+    this.showPassword = false;
     this.initSignUpForm();
     this.initFormObservables();
+  }
+
+  onSeePassword() {
+    this.showPassword = true;
+  }
+
+  onUnseePassword() {
+    this.showPassword = false;
   }
   
   private initSignUpForm(): void {

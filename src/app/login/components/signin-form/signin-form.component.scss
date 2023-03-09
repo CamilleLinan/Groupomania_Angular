@@ -1,3 +1,21 @@
+.form_input {
+    width: 98%;
+}
+
 button {
     margin-top: 0.3rem;
+}
+
+.input_password_container {
+    position: relative;
+    width: 100%;
+    &_icon {
+        position: absolute;
+        top: 0.1rem;
+        right: 0.5rem;
+        opacity: 0.3;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { faKey, faPenToSquare, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faKey, faEye, faEyeSlash, faPenToSquare, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { catchError, map, Observable, of } from 'rxjs';
 import { confirmEqualValidator } from 'src/app/core/validators/confirm.validator';
 import { passwordValidator } from 'src/app/core/validators/password.validator';
@@ -14,10 +14,13 @@ import { ProfilService } from '../../services/profil.service';
 export class UpdatePasswordComponent {
   
   faKey = faKey;
+  eyeIcon = faEye;
+  eyeSlashIcon = faEyeSlash;
   editIcon = faPenToSquare;
   validIcon = faCheck;
   
   openModify!: boolean;
+  showPassword!: boolean;
   updatePasswordForm!: FormGroup;
   updatePasswordCtrl!: FormControl;
   confirmPasswordCtrl!: FormControl;
@@ -30,12 +33,21 @@ export class UpdatePasswordComponent {
 
   ngOnInit(): void {
     this.openModify = false;
+    this.showPassword = false;
     this.initPasswordForm();
     this.initFormObservables();
   }
 
   onModify() {
     this.openModify = true;
+  }
+
+  onSeePassword() {
+    this.showPassword = true;
+  }
+
+  onUnseePassword() {
+    this.showPassword = false;
   }
 
   private initPasswordForm(): void {
