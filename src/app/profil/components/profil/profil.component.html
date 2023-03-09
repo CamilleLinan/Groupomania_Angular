@@ -6,7 +6,7 @@
     </header>
     
     <article class="profil_container">
-        <app-update-photo [userPicture]="user$.userPicture" class="profil_container_photo"></app-update-photo>
+        <app-update-photo [user$]="user$" class="profil_container_photo"></app-update-photo>
         <span class="profil_container_deco"></span>
         <app-update-infos [user$]="user$" class="profil_container_infos"></app-update-infos>
     </article>

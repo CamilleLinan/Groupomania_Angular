@@ -1,8 +1,16 @@
 <article class="update_photo">
     <h2 class="update_photo_title bold">Votre photo</h2>
-    <img *ngIf="userPicture" [src]="userPicture" alt="" class="update_photo_form_picture">
-    <form action="" class="update_photo_form">
-        <input *ngIf="openModify" type="file" class="update_photo_form_input">
+    <img *ngIf="user$ && !updatePhotoForm.controls['updatePhoto'].value" [src]="user$.userPicture" alt="" class="update_photo_form_picture">
+    <img *ngIf="updatePhotoForm.controls['updatePhoto'].value" [src]="imagePreviewURL" alt="Image Preview" class="update_photo_form_picture">
+    <form [formGroup]="updatePhotoForm" class="update_photo_form">
+        <input 
+            *ngIf="openModify" 
+            type="file"
+            accept=".jpg, .jpeg, .png"
+            formControlName="updatePhoto"
+            (change)="onFileSelected($event)" 
+            class="update_photo_form_input"
+        >
 
         <button *ngIf="!openModify" (click)="onModify()" class="update_photo_form_btn">Modifier</button>
         <button *ngIf="openModify" (click)="onSubmit()" class="update_photo_form_btn">Valider</button>

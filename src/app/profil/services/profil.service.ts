@@ -28,4 +28,12 @@ export class ProfilService {
       })
     )
   }
+
+  updatePhoto(formData: FormData) {
+    return this.http.put(`http://localhost:3001/api/user/${this.userId}/picture`, formData).pipe(
+      tap(_ => {
+        alert('Modifications prises en compte !');
+      })
+    );
+  }
 }

@@ -1,6 +1,6 @@
 <article class="update_infos">
     <h2 class="update_infos_title bold">Vos informations</h2>
-    <form [formGroup]="updateInfosForm" class="update_infos_form">
+    <form [formGroup]="updateInfosForm" *ngIf="user$" class="update_infos_form">
         <label for="firstname" class="bold">Prénom :</label>
             
             <p *ngIf="!openModify" class="update_infos_content">{{ user$.firstname }}</p>
