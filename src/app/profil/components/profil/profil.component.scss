@@ -1,6 +1,38 @@
+@media(max-width: 768px) {
+    .profil {
+        width: 70% !important;
+        max-width: inherit;
+        display: flex;
+        flex-direction: column;
+        
+        &_container {
+            flex-direction: column;
+            align-items: center;
+            
+            &_photo {
+                width: 95% !important;
+            }
+
+            &_deco {
+                display: block;
+                width: 100% !important;
+                height: 1px !important;
+                background-color: grey;
+                margin: 1.3rem 0 -0.2rem 0 !important;
+                z-index: 5000;
+            }
+
+            &_infos {
+                width: 95% !important;
+            }
+        }
+    }
+}
+
 .profil {
     position: relative;
     width: 80%;
+    max-width: 800px;
     margin: 3rem auto;
     background-color: rgba(255, 255, 255, 0.403);
     backdrop-filter: blur(10px);

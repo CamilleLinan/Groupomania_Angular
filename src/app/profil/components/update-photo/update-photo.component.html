@@ -12,7 +12,7 @@
             class="update_photo_form_input"
         >
 
-        <button *ngIf="!openModify" (click)="onModify()" class="update_photo_form_btn">Modifier</button>
-        <button *ngIf="openModify" (click)="onSubmit()" class="update_photo_form_btn">Valider</button>
+        <button *ngIf="!openModify" (click)="onModify()" class="update_photo_form_btn">Modifier <fa-icon [icon]="editIcon"></fa-icon></button>
+        <button *ngIf="openModify" (click)="onSubmit()" class="update_photo_form_btn">Valider <fa-icon [icon]="validIcon"></fa-icon></button>
     </form>
 </article>

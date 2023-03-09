@@ -28,5 +28,8 @@
                 {{ post.likes }}
             </button>
         </li>
+        <div *ngIf="posts.length === 0" class="no_post">
+            <p class="no_post_content">Aucune publication pour le moment !</p>
+        </div>
     </ul>
 </section>

@@ -13,6 +13,9 @@
 
     &_form {
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         
         &_picture {
             height: 15rem;
@@ -22,11 +25,16 @@
             box-shadow: 0 0 16px #0000002e;
             margin-bottom: 1rem;
         }
-    
+
         &_btn {
             margin-top: 0.5rem;
             height: 2rem;
             justify-self: flex-end;
         }
     }
+}
+
+fa-icon {
+    font-size: 16px;
+    margin-left: 0.3rem;
 }

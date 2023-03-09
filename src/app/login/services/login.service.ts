@@ -12,7 +12,6 @@ export class LoginService {
     createUser(formValue: UserSignUp): Observable<boolean> {
         return this.http.post('http://localhost:3001/api/user/signup', formValue).pipe(
             map(() => true),
-            delay(1000),
             catchError((error: HttpErrorResponse) => {
                 if (error.status === 409) {
                     return throwError('unique');

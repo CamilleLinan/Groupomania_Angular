@@ -20,7 +20,7 @@ export class UpdatePhotoComponent {
   imagePreviewURL: string | undefined;
   fileToUpload: File | null = null
 
-  modifyIcon = faPenToSquare;
+  editIcon = faPenToSquare;
   validIcon = faCheck;
 
   constructor(private formBuilder: FormBuilder,
