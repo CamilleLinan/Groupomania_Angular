@@ -18,7 +18,6 @@ export class TrendingService {
     getPosts() {
         this.http.get<Post[]>('http://localhost:3001/api/post').pipe(
             tap(posts => {
-                console.log('Posts:', posts);
                 this._posts$.next(posts)
             })
         ).subscribe();

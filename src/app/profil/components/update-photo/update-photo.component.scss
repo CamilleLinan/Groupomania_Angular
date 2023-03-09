@@ -1,0 +1,32 @@
+.update_photo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    &_title {
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    &_form {
+        width: 100%;
+        
+        &_picture {
+            height: 15rem;
+            width: 15rem;
+            border-radius: 10rem;
+            object-fit: cover;
+            box-shadow: 0 0 16px #0000002e;
+            margin-bottom: 1rem;
+        }
+    
+        &_btn {
+            margin-top: 0.5rem;
+            height: 2rem;
+            justify-self: flex-end;
+        }
+    }
+}

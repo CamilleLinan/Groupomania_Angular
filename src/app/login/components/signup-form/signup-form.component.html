@@ -42,7 +42,7 @@
                 type="password" 
                 formControlName="password" 
                 id="password" 
-                class="password_form_input"
+                class="form_input password_form_input"
                 [ngClass]="{ 'error': signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid }"
             >
             <span *ngIf="passwordCtrl.invalid && (passwordCtrl.dirty || passwordCtrl.touched)" class="form_error">
@@ -54,7 +54,7 @@
                 type="password" 
                 formControlName="confirmPassword" 
                 id="confirmPassword" 
-                class="password_form_input"
+                class="form_input password_form_input"
                 [ngClass]="{ 'error': passwordForm.get('confirmPassword')?.touched && passwordForm.get('confirmPassword')?.invalid }"
             >
             <span *ngIf="confirmPasswordCtrl.invalid && (confirmPasswordCtrl.dirty || confirmPasswordCtrl.touched)" class="form_error">

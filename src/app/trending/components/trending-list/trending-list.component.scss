@@ -19,49 +19,33 @@
         backdrop-filter: blur(10px);
         border-radius: 0.5rem;
         margin-bottom: 1rem;
-        border: 1px solid grey;
+        box-shadow: 0 0 10px #0000002e;
     
         &_header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.3rem 0.8rem;
-            border-bottom: 1px solid grey;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.6);
             
             &_img {
-                width: 50px;
-                height: 50px;
+                width: 45px;
+                height: 45px;
                 border-radius: 10rem;
                 margin-right: 0.6rem;
-                border: 1px solid grey;
+                border: 1px solid rgba(128, 128, 128, 0.6);
             }
             
             &_names {
                 margin: 0;
                 font-size: 18px;
-                margin-bottom: 0rem;
+                margin-bottom: -0.2rem;
             }
             
             &_date {
-                font-size: 14px;
+                font-size: 12px;
                 color: rgb(68, 68, 68);
-                margin-top: 0rem;
-            }
-
-            &_icon {
-                margin-left: 0.5rem;
-                color: rgb(68, 68, 68);
-                font-size: 16px;
-                cursor: pointer;
-                &:hover {
-                    color: #2b6b82;
-                }
-                
-                &_delete {
-                    &:hover {
-                        color: rgb(176, 0, 0);
-                    }
-                }
+                margin-top: -0.2rem;
             }
         }
 
@@ -72,12 +56,12 @@
 
         &_container {
             padding: 0.3rem 0.8rem;
-            border-bottom: 1px solid grey;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.6);;
         }
 
         &_message {
-            margin-top: 0.6rem;
-            margin-bottom: 0.8rem;
+            margin-top: 0.4rem;
+            margin-bottom: 0.6rem;
         }
 
         &_img {
@@ -100,5 +84,6 @@ button {
     border: none;
     border-radius: 0 0;
     margin-top: -0.1rem;
-    font-size: 20px;
+    font-size: 19px;
+    height: 2rem;
 }

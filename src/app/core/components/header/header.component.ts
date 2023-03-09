@@ -12,8 +12,8 @@ export class HeaderComponent {
   faUser = faUser
   faLogOut = faRightFromBracket;
 
-  constructor(private authService: AuthService) {}
-
+  constructor(private authService: AuthService) { }
+  
   logout(): void {
     this.authService.logout();
   }

@@ -1,0 +1,15 @@
+<app-header></app-header>
+<section class="profil">
+    <header class="profil_header">
+        <h1 class="profil_header_title bold">Votre profil</h1>
+        <fa-icon [icon]="profilIcon"></fa-icon>
+    </header>
+    
+    <article class="profil_container">
+        <app-update-photo [user$]="user$" class="profil_container_photo"></app-update-photo>
+        <span class="profil_container_deco"></span>
+        <app-update-infos [user$]="user$" class="profil_container_infos"></app-update-infos>
+    </article>
+
+    <button class="profil_btn">Supprimer le profil</button>
+</section>

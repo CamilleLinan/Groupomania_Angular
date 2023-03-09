@@ -7,6 +7,7 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
   imports: [
     CommonModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   exports: [
     HeaderComponent,
