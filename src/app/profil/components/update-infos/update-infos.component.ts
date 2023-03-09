@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { faPenToSquare, faCheck, faL } from '@fortawesome/free-solid-svg-icons';
-import { catchError, of, tap } from 'rxjs';
+import { faPenToSquare, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { catchError, of } from 'rxjs';
 import { UserInfos } from 'src/app/core/models/user-infos.model';
 import { nameValidator } from 'src/app/core/validators/name.validator';
 import { ProfilService } from '../../services/profil.service';

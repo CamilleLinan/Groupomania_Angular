@@ -19,4 +19,13 @@ export class ProfilService {
       })
     );
   }
+  
+  updatePassword(password: string) {
+    const body = {password: password}
+    return this.http.put(`http://localhost:3001/api/user/${this.userId}/password`, body).pipe(
+      tap(_ => {
+        alert('Modifications prises en compte !');
+      })
+    )
+  }
 }

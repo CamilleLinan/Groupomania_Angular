@@ -76,16 +76,6 @@ export class SignupFormComponent {
     })
   }
 
-  initFormObservables() {
-    this.showPasswordError$ = this.passwordForm.statusChanges.pipe(
-      map(status => status === 'INVALID' &&
-                    this.passwordCtrl.value &&
-                    this.confirmPasswordCtrl.value &&
-                    this.passwordForm.hasError('confirmEqual')
-        )
-    )
-  }
-
   getErrorMessages(ctrl: AbstractControl) {
     if (ctrl.hasError('required')) {
       return 'Ce champ est requis';
@@ -108,6 +98,16 @@ export class SignupFormComponent {
     } else {
       return 'Ce champ contient une erreur de format'
     }
+  }
+
+  initFormObservables() {
+    this.showPasswordError$ = this.passwordForm.statusChanges.pipe(
+      map(status => status === 'INVALID' &&
+                    this.passwordCtrl.value &&
+                    this.confirmPasswordCtrl.value &&
+                    this.passwordForm.hasError('confirmEqual')
+      )
+    )
   }
 
   onSubmitSignUpForm() {

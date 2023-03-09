@@ -7,6 +7,7 @@
             [(ngModel)]="user$.firstname"
             formControlName="firstname" 
             class="form_input"
+            [ngClass]="{ 'error': updateInfosForm.get('firstname')?.touched && updateInfosForm.get('firstname')?.invalid }"
         >
         <span *ngIf="updateFirstnameCtrl.invalid && (updateFirstnameCtrl.dirty || updateFirstnameCtrl.touched)" class="form_error">
             {{ getErrorMessages(updateFirstnameCtrl) }}
@@ -20,6 +21,7 @@
             [(ngModel)]="user$.lastname"
             formControlName="lastname" 
             class="form_input"
+            [ngClass]="{ 'error': updateInfosForm.get('lastname')?.touched && updateInfosForm.get('lastname')?.invalid }"
         >
         <span *ngIf="updateLastnameCtrl.invalid && (updateLastnameCtrl.dirty || updateLastnameCtrl.touched)" class="form_error">
             {{ getErrorMessages(updateLastnameCtrl) }}
@@ -33,6 +35,7 @@
             [(ngModel)]="user$.email"
             formControlName="email" 
             class="form_input"
+            [ngClass]="{ 'error': updateInfosForm.get('email')?.touched && updateInfosForm.get('email')?.invalid }"
         >
         <span *ngIf="updateEmailCtrl.invalid && (updateEmailCtrl.dirty || updateEmailCtrl.touched)" class="form_error">
             {{ getErrorMessages(updateEmailCtrl) }}
@@ -41,5 +44,5 @@
     <span *ngIf="errorMessage" class="form_error bold center">{{ errorMessage }}</span>
 
     <button *ngIf="!openModify" (click)="onModify()" class="profil_infos_form_btn">Modifier <fa-icon [icon]="editIcon"></fa-icon></button>
-    <button *ngIf="openModify" (click)="onSubmit()" class="profil_infos_form_btn">Valider <fa-icon [icon]="validIcon"></fa-icon></button>
+    <button *ngIf="openModify" (click)="onSubmit()" [disabled]="updateInfosForm.invalid" class="profil_infos_form_btn">Valider <fa-icon [icon]="validIcon"></fa-icon></button>
 </form>
