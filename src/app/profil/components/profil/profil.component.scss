@@ -6,6 +6,7 @@
     backdrop-filter: blur(10px);
     padding: 1rem;
     border-radius: 0.8rem;
+    box-shadow: 0 0 10px #0000002e;
     
     &_header {
         display: flex;
@@ -27,20 +28,24 @@
             width: 50%;
         }
 
-        &_infos {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        &_photo {
+            width: 50%;
         }
-        
-        &_title {
-            margin: 1rem 0;
-            font-size: 25px;
-            text-align: center;
+
+        &_deco {
+            display: block;
+            width: 1px;
+            background-color: grey;
+            margin: 0 1rem;
+            z-index: 5000;
+        }
+
+        &_infos {
+            width: 50%;
         }
     }
 
-    & button {
+    &_btn {
         position: absolute;
         right: 0;
         bottom: -2rem;
@@ -52,15 +57,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        &:hover {
+            opacity: 1;
+        }
     }
-}
-
-.deco {
-    display: block;
-    width: 1px;
-    background-color: grey;
-    margin: 0 1rem;
-    z-index: 5000;
 }
 
 fa-icon {

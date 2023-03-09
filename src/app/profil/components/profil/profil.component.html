@@ -5,24 +5,11 @@
         <fa-icon [icon]="profilIcon"></fa-icon>
     </header>
     
-    <div class="profil_container">
-        <article class="profil_container_picture">
-            <h2 class="profil_container_title bold">Votre photo</h2>
-            
-            <app-update-photo [userPicture]="user$.userPicture" class="profil_container_photo"></app-update-photo>
-        </article>
+    <article class="profil_container">
+        <app-update-photo [userPicture]="user$.userPicture" class="profil_container_photo"></app-update-photo>
+        <span class="profil_container_deco"></span>
+        <app-update-infos [user$]="user$" class="profil_container_infos"></app-update-infos>
+    </article>
 
-        <span class="deco"></span>
-        
-        <article class="profil_container_infos">
-            <h2 class="profil_container_title bold">Vos informations</h2>
-            
-            <app-update-infos 
-                [user$]="user$"
-            ></app-update-infos>
-            
-            <app-update-password></app-update-password>
-        </article>
-    </div>
-    <button class="profil_footer_btn">Supprimer le profil</button>
+    <button class="profil_btn">Supprimer le profil</button>
 </section>

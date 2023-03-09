@@ -1,7 +1,10 @@
-<form action=""  class="profil_photo_form">
-    <img *ngIf="userPicture" [src]="userPicture" alt="" class="profil_photo_form_img">
-    <input *ngIf="openModify" type="file" class="form_input">
+<article class="update_photo">
+    <h2 class="update_photo_title bold">Votre photo</h2>
+    <img *ngIf="userPicture" [src]="userPicture" alt="" class="update_photo_form_picture">
+    <form action="" class="update_photo_form">
+        <input *ngIf="openModify" type="file" class="update_photo_form_input">
 
-    <button *ngIf="!openModify" (click)="onModify()" class="profil_photo_form_btn">Modifier</button>
-    <button *ngIf="openModify" (click)="onSubmit()" class="profil_photo_form_btn">Valider</button>
-</form>
+        <button *ngIf="!openModify" (click)="onModify()" class="update_photo_form_btn">Modifier</button>
+        <button *ngIf="openModify" (click)="onSubmit()" class="update_photo_form_btn">Valider</button>
+    </form>
+</article>
