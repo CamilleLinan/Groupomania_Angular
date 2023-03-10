@@ -15,4 +15,4 @@ Créer une partie front-end avec un framework, ici Angular. Et une API sécuris�
 ## Langages utilisés :
 HTML5 / CSS3 / SASS / TypeScript / Node.js / MongoDB / Angular
 
-Plus d'informations sur mon portfolio : https://camillelinan.com/project/Groupomania%20-%20Angular
++ Plus d'informations sur mon portfolio : https://camillelinan.com/project/Groupomania%20-%20Angular
