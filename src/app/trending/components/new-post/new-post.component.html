@@ -20,6 +20,6 @@
 
         <span *ngIf="errorMessage" class="form_error bold center">{{ errorMessage }}</span>
 
-        <button type="submit" (click)="onSubmitNewPostForm()" [disabled]="newPostForm.invalid">Publier</button>
+        <button type="submit" (click)="onSubmit()" [disabled]="newPostForm.invalid">Publier</button>
     </form>
 </section>

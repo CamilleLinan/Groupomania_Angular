@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { catchError, of, tap } from 'rxjs';
 import { UserInfos } from 'src/app/core/models/user-infos.model';
 import { UserInfosService } from 'src/app/core/services/user-infos.service';
-import { Post } from '../../models/post.modele';
 import { TrendingService } from '../../services/trending.service';
 
 @Component({
@@ -71,7 +70,7 @@ export class NewPostComponent {
     });
   }
 
-  onSubmitNewPostForm() {
+  onSubmit() {
     const formData = new FormData();
     formData.append('posterId', this.userId!);
     formData.append('message', this.messageCtrl.value);
@@ -80,7 +79,6 @@ export class NewPostComponent {
       tap(savedPost => {
         if (savedPost) {
           this.newPostForm.reset();
-          window.location.reload();
         }
       }),
       catchError(error => {

@@ -26,7 +26,8 @@ export class TrendingService {
     createNewPost(formData: FormData): Observable<Post> {
         return this.http.post<Post>('http://localhost:3001/api/post', formData).pipe(
             tap(_ => {
-                alert('Votre post va être publié !')
+                alert('Votre post va être publié !');
+                this.getPosts();
             })
         );
     }
@@ -47,7 +48,7 @@ export class TrendingService {
         return this.http.delete(`http://localhost:3001/api/post/${postId}`).pipe(
             tap(_ => {
                 alert('Votre post va être supprimé.');
-                window.location.reload();
+                this.getPosts();
             })
         ).subscribe();
     }
@@ -56,7 +57,7 @@ export class TrendingService {
         return this.http.put(`http://localhost:3001/api/post/${postId}`, formData).pipe(
             tap(_ => {
                 alert('Modifications prises en compte !');
-                window.location.reload();
+                this.getPosts();
             })
         )
     }

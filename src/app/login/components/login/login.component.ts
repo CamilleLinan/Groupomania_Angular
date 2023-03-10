@@ -32,10 +32,6 @@ export class LoginComponent {
     return '';
   }
 
-  onSubmitSignInForm(): void {
-    console.log('SignIn form submitted:', this.signInForm.value);
-  }
-
   toggleForm(form: string): void {
     if (form === 'signUp') {
       this.showSignUpForm = true;

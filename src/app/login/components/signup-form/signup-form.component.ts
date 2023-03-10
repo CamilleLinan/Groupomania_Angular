@@ -128,8 +128,6 @@ export class SignupFormComponent {
       tap(saved => {
         if (saved) {
           this.submittedSuccessfully = true;
-        } else {
-          console.log('Echec')
         }
       }),
       catchError(error => {

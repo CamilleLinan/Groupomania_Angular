@@ -62,8 +62,6 @@ export class SigninFormComponent {
       tap(saved => {
         if (saved) {
           this.router.navigateByUrl('/trending');
-        } else {
-          console.log('ECHEC')
         }
       }),
       catchError(error => {

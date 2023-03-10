@@ -22,11 +22,11 @@ export class DeletePostComponent {
     
     this.onCancelFn = () => {
       this.openModal = false;
-      console.log('click cancel')
     }
 
     this.onDeleteFn = (postId: string) => {
       this.trendingService.deletePost(postId);
+      this.trendingService.getPosts();
     }
   }
   
